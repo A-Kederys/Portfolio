@@ -1,0 +1,84 @@
+@import "../../variables.css";
+
+.navbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    margin: 0 8%;
+}
+
+.title {
+    font-size: 25px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-text-d);
+}
+
+.menu {
+    display: flex;
+}
+
+.menuItems {
+    display: flex;
+    gap: 50px;
+    list-style: none;
+}
+
+.menuItems a {
+    font-size: 20px;
+    color: var(--color-text-d);
+    text-decoration: none;;
+}
+
+.menuBtn {
+    display: none;
+}
+
+@media screen and (max-width: 830px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu {
+        position: absolute;
+        right: 0;
+        margin-right: 8%;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+    }
+
+    .menuBtn {
+        display: block;
+        cursor: pointer;
+        width: 35px;
+        position: relative;
+        left: 50px;
+    }
+
+    .menuItems {
+        display: none;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        border-radius: 10px;
+        background: var(--color-bg-d);
+        background: linear-gradient(0deg, rgba(30, 30, 30, 0.5) 0%, rgba(30, 30, 30, 1) 100%);
+        padding: 15px 30px;
+        box-shadow: 0 3px 10px 0 rgba(255,111,97, 0.5);
+        left: 50px;
+    }
+
+    .menuItems a{
+        color: var(--color-text-d);
+    }
+
+    .menuOpen {
+        display: flex;
+    }
+}

@@ -1,0 +1,6 @@
+@import "../../variables.css";
+
+.block {
+    height: 2000px;
+    color: var(--color-text-d);
+}

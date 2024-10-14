@@ -1,10 +1,7 @@
 @import "./variables.css";
 
 .App {
-    Background-color: var(--color-bg) ;
+    Background-color: var(--color-bg-d);
     width: 100%;
     height: 100%;
-
-    color: var(--color-text)
-
 }
