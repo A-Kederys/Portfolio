@@ -1,6 +1,147 @@
 @import "../../variables.css";
 
-.block {
-    height: 2000px;
+.container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 10px 8% 0 8%;
+}
+
+.content {
+    margin-left: 35px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: var(--color-text-d);
+    animation: fadeInLeft 1s forwards;
+}
+
+.title {
+    align-self: flex-start;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 25px;
+    font-family: var(--font-barlow);
+    background: linear-gradient(
+        180deg, 
+        rgba(255,111,97, 0.5) 10%, 
+        rgba(255,111,97, 1) 90%
+    );
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.description {
+    font-size: 20px;
+    font-family: var(--font-barlow);
+    margin-bottom: 35px;
+}
+
+.contactBtn {
+    text-decoration: none;
+    background-color: var(--color-bg-d);
+    color: var(--color-secondary-d);
+    border-radius: 100px;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 10px 18px;
+    box-shadow: 0 0 3px 2px var(--color-secondary-d);
+}
+
+.profileImg {
+    width: 50%;
+    animation: fadeInUp 1s forwards;
+}
+
+.socials {
+    animation: fadeInLeft 1s forwards;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 10px;
+}
+
+.link img {
+    display: flex;
+    width: 35px;
+    transition: transform 0.3s ease;
+}
+
+.link img:hover {
+    transform: scale(1.2);
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+
+
+@media screen and (max-width: 830px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .content {
+        align-items: center;
+        margin-right: 35px;
+    }
+
+    .title {
+        align-self: center;
+        font-size: 35px;
+        margin-bottom: 15px;
+    }
+
+    .description {
+        align-self: center;
+        font-size: 17px;
+        margin-bottom: 25px;
+    }
+
+    .contactBtn {
+        font-size: 17px;
+        padding: 8px 14px;
+    }
+
+    .socials {
+        display: none;
+        width: 100%; 
+    }
+
+    .links {
+        margin-top:  20px;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-right: 0;
+    }
+
+    .link img {
+        margin-right: 0;
+        width: 25px;
+    }
+
 }

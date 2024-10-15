@@ -8,7 +8,7 @@ function Navbar() {
     
   return (
         <nav className={styles.navbar}>
-            <a className={styles.title} href="/">Almantas-K</a>
+            <a className={styles.title} href="/">A-Kederys</a>
             <div className={styles.menu}> 
                 <img 
                     className={styles.menuBtn} 
@@ -23,9 +23,9 @@ function Navbar() {
                 <ul className={`${styles.menuItems} ${isMenuOpen && styles.menuOpen}`}
                     onClick= {() => setMenuOpen(false)} 
                 >
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#About">About</a></li>
+                    <li><a href="#Projects">Projects</a></li>
+                    <li><a href="#Contact">Contact</a></li>
                 </ul>
             </div>
         </nav>
