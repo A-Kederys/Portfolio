@@ -4,7 +4,8 @@
     position: relative;
     display: flex;
     align-items: center;
-    margin: 10px 8% 0 8%;
+    margin: 35px 8% 0 8%;
+    padding-top: 50px;
 }
 
 .content {
@@ -12,7 +13,7 @@
     margin-right: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     color: var(--color-text-d);
     animation: fadeInLeft 1s forwards;
 }
@@ -21,7 +22,7 @@
     align-self: flex-start;
     font-size: 40px;
     font-weight: 500;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     font-family: var(--font-barlow);
     background: linear-gradient(
         180deg, 
@@ -35,7 +36,8 @@
 .description {
     font-size: 20px;
     font-family: var(--font-barlow);
-    margin-bottom: 35px;
+    margin-bottom: 25px;
+    max-width: 500px
 }
 
 .contactBtn {
@@ -50,12 +52,13 @@
 }
 
 .profileImg {
-    width: 50%;
+    width: 33%;
     animation: fadeInUp 1s forwards;
 }
 
 .socials {
     animation: fadeInLeft 1s forwards;
+    margin-left: auto;
 }
 
 .links {
@@ -103,6 +106,7 @@
 @media screen and (max-width: 830px) {
     .container {
         flex-direction: column;
+        margin-top: 15px;
     }
 
     .content {
@@ -113,7 +117,7 @@
     .title {
         align-self: center;
         font-size: 35px;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
 
     .description {
@@ -144,4 +148,7 @@
         width: 25px;
     }
 
+    .profileImg {
+        margin: 10px 0;
+    }
 }

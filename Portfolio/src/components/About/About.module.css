@@ -1,0 +1,149 @@
+@import "../../variables.css";
+
+.container {
+    border-radius: 10px;
+    padding: 35px;
+    margin: 35px 8% 0 8%;
+    box-shadow: 0 3px 10px 0 rgba(255,111,97, 0.5);
+}
+
+.title {
+    color: var(--color-text-d);
+    font-size: 35px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.aboutItems {
+    color: var(--color-text-d);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    animation: fadeInRight 1s forwards;
+    height: 450px;
+}
+
+.aboutItemsRight {
+    color: var(--color-text-d);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    animation: fadeInLeft 1s forwards;
+    height: 450px;
+}
+
+.aboutItem {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 5px;
+    list-style: none;
+    padding: 10px 10px 15px 20px;
+    background-image: linear-gradient(
+        -90deg, 
+        rgba(255,111,97, 0.42) 0%, 
+        rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 0 100%;
+    background-repeat: no-repeat;
+    transition: 0.5s;
+}
+
+.aboutItem:hover {
+    background-size: 100% 100%;
+}
+
+.aboutItemRight {
+    background-image: linear-gradient(
+        90deg, 
+        rgba(255,111,97, 0.38) 0%, 
+        rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 0% 100%;
+    background-position: right;
+    background-repeat: no-repeat;
+    transition: 0.5s;
+}
+
+.rightItem:hover {
+    background-size: 100% 100%;
+    background-position: right;
+}
+
+.aboutItemTitle {
+    display: flex;
+    flex-direction: row;
+    gap: 10px
+}
+
+.aboutItem h3 {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.aboutItem p {
+    font-size: 20px;
+}
+
+.aboutItem a {
+    color: var(--color-secondary-d);
+    text-decoration: none;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+}
+
+.aboutItem img {
+    width: 35px;
+    height: 35px;
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media screen and (max-width: 830px) {
+    .container {
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .aboutItems {
+        margin-top: 17px;
+    }
+
+    .aboutItem {
+        padding-left: 0;
+    }
+}

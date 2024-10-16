@@ -7,6 +7,7 @@ function Navbar() {
     const [isMenuOpen, setMenuOpen] = useState(false);
     
   return (
+    <div className={styles.navWrap}>
         <nav className={styles.navbar}>
             <a className={styles.title} href="/">A-Kederys</a>
             <div className={styles.menu}> 
@@ -29,6 +30,7 @@ function Navbar() {
                 </ul>
             </div>
         </nav>
+    </div>
   )
 }
 
