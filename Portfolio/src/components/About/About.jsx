@@ -2,6 +2,7 @@ import React from 'react'
 import styles from "./About.module.css"
 import { getImageURL } from '../../imgPath';
 //https://icons8.com/icons/
+import skills from "../../data/skills.json"
 
 function About() {
   return (
@@ -27,9 +28,19 @@ function About() {
                         <img src={getImageURL("about/skills.png")} alt="skills icon" />
                         <h3>Skills</h3>
                     </div>
-                        <p>
-                            
-                        </p>
+                    <div className={styles.skills}>{
+                        skills.map((skill, id) => {
+                            return (
+                            <div className={styles.skill} key={id}>
+                                <div className={styles.skillContainer}>
+                                    <img src={getImageURL(skill.imageSrc)} 
+                                    alt={`${skill.title} Logo`} />
+                                </div>
+                                <p>{skill.title}</p>
+                            </div>
+                            );
+                        })}
+                    </div> 
                 </li>
             </ul>
             

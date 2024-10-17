@@ -28,7 +28,7 @@
     flex-direction: column;
     gap: 15px;
     animation: fadeInRight 1s forwards;
-    height: 450px;
+    align-self: flex-start;
 }
 
 .aboutItemsRight {
@@ -37,7 +37,7 @@
     flex-direction: column;
     gap: 15px;
     animation: fadeInLeft 1s forwards;
-    height: 450px;
+    align-self: flex-start;
 }
 
 .aboutItem {
@@ -106,6 +106,32 @@
     height: 35px;
 }
 
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-top: 10px;
+}
+
+.skill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skillContainer {
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+}
+
+.skillContainer img {
+    width: 50px;
+    height: 50px;
+}
 @keyframes fadeInRight {
     0% {
         opacity: 0;
@@ -145,5 +171,14 @@
 
     .aboutItem {
         padding-left: 0;
+    }
+
+    .aboutItemRight {
+        background-image: linear-gradient(
+            -90deg, 
+            rgba(255,111,97, 0.38) 0%, 
+            rgba(255, 255, 255, 0) 100%
+        );
+        background-position: left;
     }
 }
