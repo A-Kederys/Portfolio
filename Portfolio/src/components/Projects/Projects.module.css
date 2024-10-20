@@ -1,15 +1,16 @@
 @import "../../variables.css";
 
 .container {
-    margin: 35px 8% 0 8%;
+    margin: 70px 8% 0 8%;
+    position: relative;
 }
 
 .title {
-    color: var(--color-text-d);
+    color: var(--color-primary-d);
     font-size: 35px;
     font-weight: 600;
     letter-spacing: 1.5px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     text-transform: uppercase;
     font-family: var(--font-barlow);
 }
@@ -17,28 +18,89 @@
 .projects {
     color: var(--color-text-d);
     margin-top: 15px;
+    margin-left: 35px;
+    margin-right: 35px;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: flex-start;
     gap: 35px;
-    width: 100%;
+    width: calc(100% - 70px);
+    animation: fadeInLeft 1s forwards;
+    overflow-x: hidden;
+    padding: 10px;
+
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 10px;
 }
 
 .projectContainer {
+    position: relative;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
     box-shadow: 0 3px 10px 0 var(--color-secondary-d);
     padding: 10px;
     max-width: 350px;
+    flex-shrink: 0;
+
+    scroll-snap-align: start;
+}
+
+.leftArrow, .rightArrow {
+    position: absolute;
+    top: 50%;
+    scale: 2;
+    transform: translateY(-50%);
+    color: rgba(255,111,97, 0.75);
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.leftArrow {
+    left: -5px;
+}
+
+.rightArrow {
+    right: -5px;
 }
 
 .image {
     margin-bottom: 10px;
+    max-height: 150px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    cursor: pointer;
+    border-radius: 10px;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-secondary-d);
+    font-size: 25px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.image:hover + .overlay {
+    opacity: 1;
 }
 
 .projectTitle {
+    color: var(--color-primary-d);
     font-size: 25px;
     font-weight: 700;
     margin-bottom: 5px;
@@ -79,7 +141,7 @@
     margin-bottom: 10px;
     border-radius: 100px;
     padding: 8px 14px;
-    box-shadow: 0 0 3px 2px var(--color-secondary-d);
+    border: 1px solid var(--color-secondary-d);
     transition: 0.3s ease-in-out;
 }
 
@@ -87,8 +149,59 @@
     transform: scale(1.1);
 }
 
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.modalImage {
+    max-width: 84%;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 @media screen and (max-width: 830px) {
     .link {
         font-size: 17px;
+    }
+
+    .container {
+        margin-top: 35px;
+    }
+
+    .title {
+        border-left: 3px solid rgba(255,111,97, 0.75);
+        padding-left: 7px;
+    }
+
+    .projects {
+        flex-direction: column;
+        align-items: center;
+        overflow-x: visible;
+        scroll-snap-type: none;
+        scroll-padding-left: 0;
+    }
+
+    .leftArrow, .rightArrow {
+        display: none;
     }
 }

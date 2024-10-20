@@ -6,6 +6,7 @@
     align-items: center;
     margin: 35px 8% 0 8%;
     padding-top: 50px;
+    animation: fadeInLeft 1s forwards;
 }
 
 .content {
@@ -15,7 +16,6 @@
     flex-direction: column;
     align-items: flex-start;
     color: var(--color-text-d);
-    animation: fadeInLeft 1s forwards;
 }
 
 .title {
@@ -58,13 +58,11 @@
 
 .profileImg {
     width: 33%;
-    animation: fadeInUp 1s forwards;
     border-radius: 50%;
     box-shadow: 0 5px 10px 0 rgba(255,111,97, 0.5);
 }
 
 .socials {
-    animation: fadeInLeft 1s forwards;
     margin-left: auto;
 }
 
@@ -83,17 +81,6 @@
 
 .link img:hover {
     transform: scale(1.2);
-}
-
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
 }
 
 @keyframes fadeInLeft {

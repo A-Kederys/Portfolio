@@ -36,7 +36,7 @@ function About() {
                 </li>
             </ul>
             
-            <ul className={styles.aboutItemsRight}>
+            <ul className={styles.aboutItems}>
             <li className={styles.aboutItem}>
                     <div className={styles.aboutItemTitle}>
                         <img src={getImageURL("about/skills.png")} alt="skills icon" />
