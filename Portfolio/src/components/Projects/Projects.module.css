@@ -25,12 +25,22 @@
     justify-content: flex-start;
     gap: 35px;
     width: calc(100% - 70px);
-    animation: fadeInLeft 1s forwards;
     overflow-x: hidden;
     padding: 10px;
 
     scroll-snap-type: x mandatory;
     scroll-padding-left: 10px;
+}
+
+.fadeIn {
+    opacity: 1;
+    transform: translateX(0);
+    transition: 1s ease 
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateX(50px);
 }
 
 .projectContainer {
@@ -153,31 +163,46 @@
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
     z-index: 10;
+}
+
+.modalOpen {
+    overflow: hidden;
 }
 
 .modalImage {
     max-width: 84%;
-    border-radius: 10px;
+    max-height: 90%;
     object-fit: contain;
+    overflow: hidden;
 }
 
-@keyframes fadeInLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
+.prevImage, .nextImage {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--color-secondary-d);
+    cursor: pointer;
+    scale: 3;
+    z-index: 11;
 }
+
+.prevImage {
+    left: 50px;
+}
+
+.nextImage {
+    right: 50px;
+}
+
 
 @media screen and (max-width: 830px) {
     .link {
@@ -203,5 +228,13 @@
 
     .leftArrow, .rightArrow {
         display: none;
+    }
+
+    .prevImage {
+        left: 15px;
+    }
+    
+    .nextImage {
+        right: 15px;
     }
 }

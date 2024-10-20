@@ -3,7 +3,7 @@
 .container {
     border-radius: 10px;
     padding: 35px;
-    margin: 35px 8% 0 8%;
+    margin: 50px 8% 0 8%;
     box-shadow: 0 3px 10px 0 rgba(255,111,97, 0.5);
 }
 
@@ -22,7 +22,10 @@
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    animation: fadeInRight 1s forwards;
+
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: 1s ease;
 }
 
 
@@ -131,17 +134,6 @@
 .skillContainer img {
     width: 50px;
     height: 50px;
-}
-
-@keyframes fadeInRight {
-    0% {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
 }
 
 @media screen and (max-width: 830px) {

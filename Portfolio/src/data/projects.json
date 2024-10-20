@@ -1,42 +1,42 @@
 [
     {
       "title": "Battleship Game",
-      "imageSrc": "projects/battleship1.png",
+      "imageSrc": ["projects/battleship1.png", "projects/battleship2.png", "projects/battleship3.png"],
       "description": "Game where players compete against a computer by guessing the location of randomly placed ships.",
       "skills": ["Node.js", "React"],
       "source": "https://github.com/A-Kederys/Battleship-game"
     },
     {
       "title": "Digital Diaries",
-      "imageSrc": "projects/diaries1.png",
+      "imageSrc": ["projects/diaries1.png", "projects/diaries2.png", "projects/diaries3.png"],
       "description": "Platform where users can share their personal moments with others.",
       "skills": ["PHP", "C#", "SQL"],
       "source": "https://github.com/A-Kederys/Digital-diaries"
     },
     {
       "title": "JSON Handler",
-      "imageSrc": "projects/json2.png",
+      "imageSrc": ["projects/json2.png", "projects/json1.png", "projects/json3.png"],
       "description": "Mobile app that lets users create JSON files from a form and parse them into a readable format.",
       "skills": ["React Native"],
       "source": "https://github.com/A-Kederys/JSON-handler"
     },
     {
       "title": "Movie Recommendations",
-      "imageSrc": "projects/movies1.png",
+      "imageSrc": ["projects/movies1.png", "projects/movies2.png", "projects/movies3.png"],
       "description": "Personal movie review webpage showcasing top movie picks by genre.",
       "skills": ["HTML", "CSS"],
       "source": "https://github.com/A-Kederys/Movie-recommendations"
     },
     {
       "title": "Twitch Hangman Guesser",
-      "imageSrc": "projects/hangman1.png",
+      "imageSrc": ["projects/hangman1.png", "projects/hangman2.png"],
       "description": "Bot that helps Twitch users guess the correct emote in a hangman game by filtering emotes",
       "skills": ["Python"],
       "source": "https://github.com/A-Kederys/Twitch-hangman-guesser"
     },
     {
       "title": "Personal Portfolio",
-      "imageSrc": "projects/portfolio1.png",
+      "imageSrc": ["projects/portfolio1.png", "projects/portfolio2.png"],
       "description": "Bot that helps Twitch users guess the correct emote in a hangman game by filtering emotes",
       "skills": ["React", "CSS"],
       "source": "https://github.com/A-Kederys/Portfolio"

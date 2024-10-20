@@ -1,14 +1,38 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react';
 import styles from "./About.module.css"
 import { getImageURL } from '../../imgPath';
 //https://icons8.com/icons/
 import skills from "../../data/skills.json"
 
 function About() {
+    const contentRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    contentRef.current.style.opacity = '1'; 
+                    contentRef.current.style.transform = 'translateX(0)';
+                }
+            },
+            { threshold: 0.1 } // trigger when % of content visible
+        );
+
+        if (contentRef.current) {
+            observer.observe(contentRef.current);
+        }
+
+        return () => {
+            if (contentRef.current) {
+                observer.unobserve(contentRef.current);
+            }
+        };
+    }, []);
+
   return (
     <section className={styles.container} id="About">
         <h2 className={styles.title}>About</h2>
-        <div className={styles.content}>
+        <div className={styles.content} ref={contentRef}>
             <ul className={styles.aboutItems}>
                 <li className={styles.aboutItem}>
                     <div className={styles.aboutItemTitle}>
