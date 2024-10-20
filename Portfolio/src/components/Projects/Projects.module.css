@@ -1,0 +1,94 @@
+@import "../../variables.css";
+
+.container {
+    margin: 35px 8% 0 8%;
+}
+
+.title {
+    color: var(--color-text-d);
+    font-size: 35px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-family: var(--font-barlow);
+}
+
+.projects {
+    color: var(--color-text-d);
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 35px;
+    width: 100%;
+}
+
+.projectContainer {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px 0 var(--color-secondary-d);
+    padding: 10px;
+    max-width: 350px;
+}
+
+.image {
+    margin-bottom: 10px;
+}
+
+.projectTitle {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.description {
+    font-size: 20px;
+}
+
+.skills {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    list-style: none;
+}
+
+.skill {
+    font-size: 25px;
+    border-radius: 100px;
+    padding: 2px 12px;
+    color: rgba(255,111,97, 0.5);
+}
+
+.links {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--color-secondary-d);
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    border-radius: 100px;
+    padding: 8px 14px;
+    box-shadow: 0 0 3px 2px var(--color-secondary-d);
+    transition: 0.3s ease-in-out;
+}
+
+.link:hover {
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 830px) {
+    .link {
+        font-size: 17px;
+    }
+}

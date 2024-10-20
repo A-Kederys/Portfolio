@@ -6,14 +6,14 @@
     top: 0;
     width: 100vw;
     z-index: 2;
-    box-shadow: 0 3px 10px 0 rgba(255,111,97, 0.5);
+    box-shadow: 0 3px 5px 0 rgba(255,111,97, 0.75);
 }
 
 .navbar {
     position: relative;
     display: flex;
     justify-content: space-between;
-    padding: 10px 0;
+    padding: 12px 0;
     margin: 0 8%;
 }
 
@@ -27,6 +27,8 @@
 
 .menu {
     display: flex;
+    align-items: center;
+    
 }
 
 .menuItems {
@@ -39,6 +41,23 @@
     font-size: 20px;
     color: var(--color-text-d);
     text-decoration: none;
+    position: relative;
+    display: inline-block;
+}
+
+.menuItems a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255,111,97, 0.75);
+    transition: width 0.3s ease-in-out;
+}
+
+.menuItems a:hover::after {
+    width: 100%;
 }
 
 .menuBtn {

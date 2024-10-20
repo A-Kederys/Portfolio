@@ -23,28 +23,6 @@ function About() {
                         demonstrate my development skills.
                     </p>
                 </li>
-                <li className={styles.aboutItem}>
-                    <div className={styles.aboutItemTitle}>
-                        <img src={getImageURL("about/skills.png")} alt="skills icon" />
-                        <h3>Skills</h3>
-                    </div>
-                    <div className={styles.skills}>{
-                        skills.map((skill, id) => {
-                            return (
-                            <div className={styles.skill} key={id}>
-                                <div className={styles.skillContainer}>
-                                    <img src={getImageURL(skill.imageSrc)} 
-                                    alt={`${skill.title} Logo`} />
-                                </div>
-                                <p>{skill.title}</p>
-                            </div>
-                            );
-                        })}
-                    </div> 
-                </li>
-            </ul>
-            
-            <ul className={styles.aboutItemsRight}>
                 <li className={`${styles.aboutItem} ${styles.aboutItemRight}`}>
                     <div className={styles.aboutItemTitle}>
                         <img src={getImageURL("about/goals.png")} alt="goals icon" />
@@ -55,6 +33,28 @@ function About() {
                             to my passion for technology and problem-solving. My goal is to continue refining my skills 
                             and deepening my knowledge in software systems.
                         </p>
+                </li>
+            </ul>
+            
+            <ul className={styles.aboutItemsRight}>
+            <li className={styles.aboutItem}>
+                    <div className={styles.aboutItemTitle}>
+                        <img src={getImageURL("about/skills.png")} alt="skills icon" />
+                        <h3>Skills</h3>
+                    </div>
+                    <div className={styles.skills}>{
+                        skills.map((skill, id) => {
+                            return (
+                            <div className={styles.skill} key={id}>
+                                <div className={styles.skillContainer}>
+                                    <img src={getImageURL(skill.imageSrc)} 
+                                    alt={`${skill.title} logo`} />
+                                </div>
+                                <p>{skill.title}</p>
+                            </div>
+                            );
+                        })}
+                    </div> 
                 </li>
                 <li className={`${styles.aboutItem} ${styles.aboutItemRight}`}>
                     <div className={styles.aboutItemTitle}>

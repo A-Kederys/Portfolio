@@ -1,0 +1,30 @@
+[
+    {
+      "title": "Battleship Game",
+      "imageSrc": "projects/programming.png",
+      "description": "Game where players compete against a computer by guessing the location of randomly placed ships.",
+      "skills": ["Node.js", "React"],
+      "source": "https://github.com/A-Kederys/Battleship-game"
+    },
+    {
+      "title": "Digital Diaries",
+      "imageSrc": "projects/programming.png",
+      "description": "Platform where users can share their personal moments with others.",
+      "skills": ["PHP", "C#", "SQL"],
+      "source": "https://github.com/A-Kederys/Digital-diaries"
+    },
+    {
+      "title": "JSON Handler",
+      "imageSrc": "projects/programming.png",
+      "description": "Mobile app that lets users create JSON files from a form and parse them into a readable format.",
+      "skills": ["React Native"],
+      "source": "https://github.com/A-Kederys/JSON-handler"
+    },
+    {
+      "title": "Movie Recommendations",
+      "imageSrc": "projects/programming.png",
+      "description": "Personal movie review webpage showcasing top movie picks by genre.",
+      "skills": ["HTML", "CSS"],
+      "source": "https://github.com/A-Kederys/Movie-recommendations"
+    }
+  ]
