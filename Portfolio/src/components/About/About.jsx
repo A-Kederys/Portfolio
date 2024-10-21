@@ -15,7 +15,7 @@ function About() {
                     contentRef.current.style.transform = 'translateX(0)';
                 }
             },
-            { threshold: 0.1 } // trigger when % of content visible
+            { threshold: 0.2 } // trigger when % of content visible
         );
 
         if (contentRef.current) {

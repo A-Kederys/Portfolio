@@ -40,7 +40,7 @@
 
 .hidden {
     opacity: 0;
-    transform: translateX(50px);
+    transform: translateX(100px);
 }
 
 .projectContainer {
@@ -206,7 +206,7 @@
 
 @media screen and (max-width: 830px) {
     .link {
-        font-size: 17px;
+        font-size: 20px;
     }
 
     .container {

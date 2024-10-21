@@ -1,5 +1,9 @@
 @import "../../variables.css";
 
+html {
+    scroll-padding-top: 70px;
+}
+
 .container {
     border-radius: 10px;
     padding: 35px;
@@ -24,7 +28,7 @@
     gap: 15px;
 
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateX(-100px);
     transition: 1s ease;
 }
 
