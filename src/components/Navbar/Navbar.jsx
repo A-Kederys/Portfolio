@@ -20,7 +20,7 @@ function Navbar() {
   return (
     <div className={styles.navWrap}>
         <nav className={styles.navbar}>
-            <a className={styles.title} href="/">A-Kederys</a>
+        <a className={styles.title} href={process.env.NODE_ENV === 'production' ? "/Portfolio/" : "/"}>A-Kederys</a>
             <div className={styles.menu}> 
                 <img 
                     className={styles.menuBtn} 
