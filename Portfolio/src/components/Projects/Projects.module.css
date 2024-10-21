@@ -6,7 +6,7 @@
 }
 
 .title {
-    color: var(--color-primary-d);
+    color: var(--color-primary);
     font-size: 35px;
     font-weight: 600;
     letter-spacing: 1.5px;
@@ -16,7 +16,7 @@
 }
 
 .projects {
-    color: var(--color-text-d);
+    color: var(--color-text);
     margin-top: 15px;
     margin-left: 35px;
     margin-right: 35px;
@@ -61,7 +61,7 @@
     top: 50%;
     scale: 2;
     transform: translateY(-50%);
-    color: rgba(255,111,97, 0.75);
+    color:  var(--color-secondary-d75);
     background-color: inherit;
     border: none;
     cursor: pointer;
@@ -83,7 +83,7 @@
     object-fit: cover;
     object-position: center;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 5px;
     position: relative;
 }
 
@@ -93,7 +93,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -101,8 +102,9 @@
     font-size: 25px;
     font-weight: 600;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.5s ease;
     pointer-events: none;
+    margin-bottom: 15px;
 }
 
 .image:hover + .overlay {
@@ -110,7 +112,7 @@
 }
 
 .projectTitle {
-    color: var(--color-primary-d);
+    color: var(--color-primary);
     font-size: 25px;
     font-weight: 700;
     margin-bottom: 5px;
@@ -133,7 +135,7 @@
     font-size: 25px;
     border-radius: 100px;
     padding: 2px 12px;
-    color: rgba(255,111,97, 0.5);
+    color:  var(--color-secondary-d75);
 }
 
 .links {
@@ -145,17 +147,22 @@
 
 .link {
     text-decoration: none;
+    box-shadow: 0 0 3px 2px var(--color-secondary-d);
+    background-color: inherit;
     color: var(--color-secondary-d);
     font-size: 25px;
     font-weight: 500;
     margin-bottom: 10px;
     border-radius: 100px;
     padding: 8px 14px;
-    border: 1px solid var(--color-secondary-d);
+    border: none;
     transition: 0.3s ease-in-out;
 }
 
 .link:hover {
+    background-color: var(--color-secondary-d);
+    color: var(--color-bg);
+    box-shadow: none;
     transform: scale(1.1);
 }
 
@@ -210,11 +217,11 @@
     }
 
     .container {
-        margin-top: 35px;
+        margin-top: 50px;
     }
 
     .title {
-        border-left: 3px solid rgba(255,111,97, 0.75);
+        border-left: 3px solid  var(--color-secondary-d75);
         padding-left: 7px;
     }
 

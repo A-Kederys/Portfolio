@@ -1,12 +1,12 @@
 @import "../../variables.css";
 
 .navWrap {
-    background-color: var(--color-bg-d);
+    background-color: var(--color-bg);
     position: fixed;
     top: 0;
     width: 100vw;
-    z-index: 2;
-    box-shadow: 0 3px 5px 0 rgba(255,111,97, 0.75);
+    z-index: 3;
+    box-shadow: 0 3px 5px 0  var(--color-secondary-d75);
 }
 
 .navbar {
@@ -18,11 +18,12 @@
 }
 
 .title {
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 600;
     font-family: var(--font-barlow);
     text-decoration: none;
     color: var(--color-secondary-d);
+    align-self: center;
 }
 
 .menu {
@@ -32,14 +33,15 @@
 
 .menuItems {
     display: flex;
-    gap: 50px;
+    gap: 35px;
     list-style: none;
     margin-right: 15px;
+    align-items: center;
 }
 
 .menuItems a {
     font-size: 20px;
-    color: var(--color-primary-d);
+    color: var(--color-primary);
     text-decoration: none;
     position: relative;
     display: inline-block;
@@ -49,10 +51,10 @@
     content: '';
     position: absolute;
     width: 0;
-    height: 2px;
-    bottom: 0;
+    height: 3px;
+    bottom: -4px;
     left: 0;
-    background-color: rgba(255,111,97, 0.75);
+    background-color:  var(--color-secondary-d75);
     transition: width 0.3s ease-in-out;
 }
 
@@ -94,15 +96,15 @@
         align-items: center;
         gap: 10px;
         border-radius: 10px;
-        background: var(--color-bg-d);
-        background: linear-gradient(0deg, rgba(30, 30, 30, 0.8) 0%, rgba(30, 30, 30, 1) 100%);
+        background: var(--color-bg);
+        background: linear-gradient(0deg, var(--color-secondary-d75) 0%, var(--color-secondary-d) 100%);
         padding: 15px 30px;
-        box-shadow: 0 3px 10px 0 rgba(255,111,97, 0.5);
+        box-shadow: 0 3px 10px 0  var(--color-secondary-d50);
         left: 50px;
     }
 
     .menuItems a{
-        color: var(--color-primary-d);
+        color: var(--color-bg);
     }
 
     .menuOpen {

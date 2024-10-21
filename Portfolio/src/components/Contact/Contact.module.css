@@ -7,15 +7,16 @@ footer {
 
 .container {
     margin: 0px 8%;
-    color: var(--color-text-d);
+    color: var(--color-text);
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 35px 0;
+    padding-bottom: 10px;
 }
 
 .container h2 {
-    color: var(--color-primary-d);
+    color: var(--color-primary);
     font-size: 35px;
     font-weight: 600;
     letter-spacing: 1.5px;
@@ -68,7 +69,7 @@ footer {
 }
 
 .input, .textarea {
-    color: var(--color-text-d);
+    color: var(--color-primary);
     padding: 10px;
     border: none;
     font-size: 16px;
@@ -95,11 +96,11 @@ footer {
 }
 
 .input::placeholder {
-    color: var(--color-text-d);
+    color: var(--color-text);
 }
 
 .textarea::placeholder {
-    color: var(--color-text-d);
+    color: var(--color-text);
 }
 
 .button {
@@ -118,7 +119,7 @@ footer {
 
 .button:hover {
     background-color: var(--color-secondary-d);
-    color: var(--color-bg-d);
+    color: var(--color-bg);
     box-shadow: none;
 }
 
@@ -129,7 +130,7 @@ footer {
 
 .feedback p {
     align-self: flex-end;
-    color: var(--color-primary-d);
+    color: var(--color-primary);
     font-size: 35px;
     font-weight: 600;
     opacity: 1;
@@ -158,7 +159,7 @@ footer {
     }
 
     .container h2 {
-        border-left: 3px solid rgba(255,111,97, 0.75);
+        border-left: 3px solid  var(--color-secondary-d75);
         padding-left: 7px;
     }
 

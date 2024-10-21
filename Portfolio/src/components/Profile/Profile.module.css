@@ -15,7 +15,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    color: var(--color-text-d);
+    color: var(--color-text);
 }
 
 .title {
@@ -26,8 +26,8 @@
     font-family: var(--font-barlow);
     background: linear-gradient(
         180deg, 
-        rgba(255,111,97, 0.5) 10%, 
-        rgba(255,111,97, 1) 90%
+         var(--color-secondary-d50) 10%, 
+         var(--color-secondary-d) 90%
     );
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -36,30 +36,32 @@
 .description {
     font-size: 20px;
     font-family: var(--font-barlow);
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     max-width: 500px
 }
 
 .contactBtn {
     text-decoration: none;
-    background-color: var(--color-bg-d);
+    background-color: inherit;
     color: var(--color-secondary-d);
+    box-shadow: 0 0 3px 2px var(--color-secondary-d);
     border-radius: 100px;
     font-size: 20px;
-    font-weight: 400;
-    padding: 10px 18px;
-    box-shadow: 0 0 3px 2px var(--color-secondary-d);
+    font-weight: 600;
+    padding: 12px 22px;
     transition: 0.3s ease-in-out;
 }
 
 .contactBtn:hover {
-    transform: scale(1.1);
+    background-color: var(--color-secondary-d);
+    color: var(--color-bg);
+    box-shadow: none;
 }
 
 .profileImg {
     width: 33%;
     border-radius: 50%;
-    box-shadow: 0 5px 10px 0 rgba(255,111,97, 0.5);
+    box-shadow: 0 5px 10px 0  var(--color-secondary-d50);
     margin: 20px 0;
 }
 
@@ -76,7 +78,7 @@
 
 .link img {
     display: flex;
-    width: 35px;
+    width: 40px;
     transition: transform 0.3s ease;
 }
 
@@ -117,12 +119,12 @@
 
     .description {
         align-self: center;
-        margin-bottom: 25px;
+        margin-bottom: 15px;
     }
 
     .contactBtn {
-        font-size: 17px;
-        padding: 8px 14px;
+        font-size: 18px;
+        padding: 10px 18px;
     }
 
     .socials {

@@ -1,18 +1,14 @@
 @import "../../variables.css";
 
-html {
-    scroll-padding-top: 70px;
-}
-
 .container {
     border-radius: 10px;
     padding: 35px;
     margin: 50px 8% 0 8%;
-    box-shadow: 0 3px 10px 0 rgba(255,111,97, 0.5);
+    box-shadow: 0 3px 10px 0  var(--color-secondary-d50);
 }
 
 .title {
-    color: var(--color-primary-d);
+    color: var(--color-primary);
     font-size: 35px;
     font-weight: 600;
     letter-spacing: 1.5px;
@@ -34,7 +30,7 @@ html {
 
 
 .aboutItems {
-    color: var(--color-text-d);
+    color: var(--color-text);
     display: flex;
     flex-direction: row;
     gap: 15px;
@@ -51,7 +47,7 @@ html {
     padding: 10px 10px 15px 20px;
     background-image: linear-gradient(
         -90deg, 
-        rgba(255,111,97, 0.42) 0%, 
+        var(--color-secondary-d50) 0%, 
         rgba(255, 255, 255, 0) 100%
     );
     background-size: 0 100%;
@@ -66,7 +62,7 @@ html {
 .aboutItemRight {
     background-image: linear-gradient(
         90deg, 
-        rgba(255,111,97, 0.38) 0%, 
+        var(--color-secondary-d50)  0%, 
         rgba(255, 255, 255, 0) 100%
     );
     background-size: 0% 100%;
@@ -144,16 +140,16 @@ html {
     .container {
         box-shadow: none;
         padding: 0;
-        margin-top: 35px;
+        margin-top: 50px;
     }
 
     .content {
         flex-direction: column;
-        gap: 15px;
+        gap: 0px;
     }
 
     .title {
-        border-left: 3px solid rgba(255,111,97, 0.75);
+        border-left: 3px solid  var(--color-secondary-d75);
         padding-left: 7px;
     }
 
@@ -174,7 +170,7 @@ html {
     .aboutItemRight {
         background-image: linear-gradient(
             -90deg, 
-            rgba(255,111,97, 0.38) 0%, 
+            var(--color-secondary-d50)  0%, 
             rgba(255, 255, 255, 0) 100%
         );
         background-position: left;
