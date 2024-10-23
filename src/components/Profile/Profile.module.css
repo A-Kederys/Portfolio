@@ -24,17 +24,12 @@
     font-weight: 500;
     margin-bottom: 10px;
     font-family: var(--font-barlow);
-    background: linear-gradient(
-        180deg, 
-         var(--color-secondary-d50) 10%, 
-         var(--color-secondary-d) 90%
-    );
-    -webkit-text-fill-color: transparent;
+    color: var(--color-secondary-d);
     background-clip: text;
 }
 
 .description {
-    font-size: 20px;
+    font-size: 24px;
     font-family: var(--font-barlow);
     margin-bottom: 20px;
     max-width: 500px
@@ -97,6 +92,39 @@
     }
 }
 
+.letter {
+    display: inline-block;
+    position: relative;
+    opacity: 0;
+    color: var(--color-secondary-d50);
+    animation: flyIn 0.3s forwards, gradientReveal 5.1s forwards;
+}
+
+@keyframes flyIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50px, -50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes gradientReveal {
+    0% {
+        background: none;
+    }
+    100% {
+        background: linear-gradient(
+            180deg, 
+            var(--color-secondary-d75) 10%, 
+            var(--color-secondary-d) 90%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
 
 
 
@@ -104,6 +132,7 @@
     .container {
         flex-direction: column;
         margin-top: 15px;
+        animation: none;
     }
 
     .content {
@@ -146,5 +175,19 @@
 
     .profileImg {
         margin: 10px 0;
+        margin-top: 25px;
+    }
+
+    .letter {
+        opacity: 1;
+        animation: none;
+        color: var(--color-secondary-d);
+        background: linear-gradient(
+            180deg, 
+            var(--color-secondary-d75) 10%, 
+            var(--color-secondary-d) 90%
+        );
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 }

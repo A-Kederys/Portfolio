@@ -8,9 +8,18 @@ function About() {
     const contentRef = useRef(null);
 
     useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 830) {
+                if (contentRef.current) {
+                    contentRef.current.style.opacity = '1';
+                    contentRef.current.style.transform = 'none';
+                }
+            }
+        };
+
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting && window.innerWidth >= 830) {
                     contentRef.current.style.opacity = '1'; 
                     contentRef.current.style.transform = 'translateX(0)';
                 }
@@ -22,10 +31,14 @@ function About() {
             observer.observe(contentRef.current);
         }
 
+        window.addEventListener('resize', handleResize);
+        handleResize();
+
         return () => {
             if (contentRef.current) {
                 observer.unobserve(contentRef.current);
             }
+            window.removeEventListener('resize', handleResize);
         };
     }, []);
 

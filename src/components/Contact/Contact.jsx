@@ -28,7 +28,7 @@ function Contact() {
         emailRef.current.value = '';
         messageRef.current.value = '';
 
-        setFeedbackMessage("Sent!");
+        setFeedbackMessage("Done!");
         setIsFadingOut(false);
         setIsButtonDisabled(true);
 
@@ -51,7 +51,7 @@ function Contact() {
                     contentRef.current.style.transform = 'translateX(0)';
                 }
             },
-            { threshold: 0.2 }
+            { threshold: 0.3 }
         );
 
         if (contentRef.current) {

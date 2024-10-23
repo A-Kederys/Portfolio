@@ -72,6 +72,10 @@
         align-items: flex-start;
     }
 
+    .title {
+        align-self: flex-start;
+    }
+
     .menu {
         position: absolute;
         right: 0;

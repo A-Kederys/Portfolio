@@ -146,6 +146,9 @@
     .content {
         flex-direction: column;
         gap: 0px;
+
+        transform: none;
+        transition: none;
     }
 
     .title {

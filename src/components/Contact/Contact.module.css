@@ -152,6 +152,9 @@ footer {
     .content {
         display: flex;
         flex-direction: column;
+        opacity: 1;
+        transform: none;
+        transition: none;
     }
 
     .form {

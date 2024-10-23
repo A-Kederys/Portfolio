@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import styles from "./Profile.module.css";
 import { getImageURL } from '../../imgPath';
 
 function Profile() {
+  const [letters, setLetters] = useState([]);
+
+  useEffect(() => {
+    const name = 'Almantas Kederys';
+    const letterArray = name.split('').map((letter, index) => ({
+      letter: letter === ' ' ? '\u00A0' : letter,
+      id: index,
+      startX: Math.floor(Math.random() * window.innerWidth) - 100,
+      startY: Math.floor(Math.random() * window.innerHeight) - 100
+    }));
+    setLetters(letterArray);
+  }, []);
+
+
   return (
     <section className={styles.container}>
       <img 
@@ -11,9 +25,23 @@ function Profile() {
         className={styles.profileImg}
       />
       <div className={styles.content}>
-        <h1 className={styles.title}>Almantas Kederys</h1>
+      <h1 className={styles.title}>
+        {letters.map(({ letter, id, startX, startY }) => (
+          <span 
+            key={id} 
+            className={styles.letter} 
+            style={{
+              animationDelay: `${id * 0.1 + 0.5}s`,
+              '--startX': `${startX}px`,
+              '--startY': `${startY}px`
+            }}
+          >
+          {letter}
+          </span>
+          ))}
+      </h1>
         <p className={styles.description}>
-          I'm a software systems student at Kauno Kolegija
+          Software systems student at Kauno Kolegija
           Higher Education Institution. Scroll below to learn
           more!
         </p>

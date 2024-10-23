@@ -66,6 +66,7 @@
     border: none;
     cursor: pointer;
     z-index: 1;
+    padding: 3px;
 }
 
 .leftArrow {
@@ -200,6 +201,7 @@
     cursor: pointer;
     scale: 3;
     z-index: 11;
+    padding: 5px;
 }
 
 .prevImage {
@@ -231,6 +233,10 @@
         overflow-x: visible;
         scroll-snap-type: none;
         scroll-padding-left: 0;
+
+        opacity: 1;
+        transform: translateX(0);
+        transition: none;
     }
 
     .leftArrow, .rightArrow {
