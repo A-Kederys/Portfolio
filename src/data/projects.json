@@ -37,7 +37,7 @@
     {
       "title": "Personal Portfolio",
       "imageSrc": ["projects/portfolio1.png", "projects/portfolio2.png"],
-      "description": "Bot that helps Twitch users guess the correct emote in a hangman game by filtering emotes",
+      "description": "Portfolio website showcasing my personal information in a visually appealing layout.",
       "skills": ["React", "CSS"],
       "source": "https://github.com/A-Kederys/Portfolio"
     }

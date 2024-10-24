@@ -4,6 +4,21 @@ import { getImageURL } from '../../imgPath';
 
 function Profile() {
   const [letters, setLetters] = useState([]);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 830);
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const name = 'Almantas Kederys';
@@ -26,20 +41,24 @@ function Profile() {
       />
       <div className={styles.content}>
       <h1 className={styles.title}>
-        {letters.map(({ letter, id, startX, startY }) => (
-          <span 
-            key={id} 
-            className={styles.letter} 
-            style={{
-              animationDelay: `${id * 0.1 + 0.5}s`,
-              '--startX': `${startX}px`,
-              '--startY': `${startY}px`
-            }}
-          >
-          {letter}
-          </span>
-          ))}
-      </h1>
+          {isSmallScreen ? (
+            'Almantas Kederys'
+          ) : (
+            letters.map(({ letter, id, startX, startY }) => (
+              <span 
+                key={id} 
+                className={styles.letter} 
+                style={{
+                  animationDelay: `${id * 0.1 + 0.5}s`,
+                  '--startX': `${startX}px`,
+                  '--startY': `${startY}px`,
+                }}
+              >
+                {letter}
+              </span>
+            ))
+          )}
+        </h1>
         <p className={styles.description}>
           Software systems student at Kauno Kolegija
           Higher Education Institution. Scroll below to learn

@@ -18,7 +18,7 @@ function Contact() {
         const message = messageRef.current.value;
 
         const subject = encodeURIComponent(`Portfolio message from "${name}"`);
-        const body = encodeURIComponent(message);
+        const body = encodeURIComponent(`${message}\n\n--\n${name},\n${email}`);
 
         const mailtoLink = `mailto:almantaskederys@gmail.com?subject=${subject}&body=${body}`;
 
@@ -48,7 +48,7 @@ function Contact() {
             ([entry]) => {
                 if (entry.isIntersecting) {
                     contentRef.current.style.opacity = '1'; 
-                    contentRef.current.style.transform = 'translateX(0)';
+                    contentRef.current.style.transform = 'translateY(0)';
                 }
             },
             { threshold: 0.3 }
@@ -77,6 +77,7 @@ function Contact() {
                         required
                         ref={nameRef}
                         className={styles.input}
+                        autoComplete="off"
                     />
                     <input
                         type="email"
@@ -84,12 +85,14 @@ function Contact() {
                         required
                         ref={emailRef}
                         className={styles.input}
+                        autoComplete="new-password"
                     />
                     <textarea
                         placeholder="Your Message"
                         required
                         ref={messageRef}
                         className={styles.textarea}
+                        autoComplete="off"
                     />
                     <div className={styles.feedback}>
                         <button type="submit" className={styles.button} disabled={isButtonDisabled}>Send</button>

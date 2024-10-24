@@ -35,7 +35,7 @@
 .fadeIn {
     opacity: 1;
     transform: translateX(0);
-    transition: 1s ease 
+    transition: 1s ease;
 }
 
 .hidden {

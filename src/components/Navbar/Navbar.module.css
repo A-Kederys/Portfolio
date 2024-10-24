@@ -114,4 +114,8 @@
     .menuOpen {
         display: flex;
     }
+
+    .menuItems a::after {
+        background-color:  var(--color-bg);
+    }
 }
