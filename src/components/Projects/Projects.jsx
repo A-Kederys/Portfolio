@@ -10,13 +10,19 @@ function Projects() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedProjectImages, setSelectedProjectImages] = useState([]);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const [isVisible, setIsVisible] = useState(false); 
+    const [isVisible, setIsVisible] = useState(false);
+    const [isDragging, setIsDragging] = useState(false);
+    const [scrollLeftStart, setScrollLeftStart] = useState(0);
+    const [startX, setStartX] = useState(0);
+    const [isSnapping, setIsSnapping] = useState(true);
 
     const scrollLeft = () => {
+        setIsSnapping(true);
         scrollRef.current.scrollBy({ left: -700, behavior: 'smooth' });
       };
 
     const scrollRight = () => {
+        setIsSnapping(true);
         scrollRef.current.scrollBy({ left: 700, behavior: 'smooth' });
       };
 
@@ -61,6 +67,36 @@ function Projects() {
         );
     };
 
+    //left click scrolling
+    const handleMouseDown = (e) => {
+        setIsDragging(true);
+        setStartX(e.pageX - scrollRef.current.offsetLeft);
+        setScrollLeftStart(scrollRef.current.scrollLeft);
+        setIsSnapping(false);
+        scrollRef.current.style.scrollBehavior = 'auto';
+    };
+
+    const handleMouseMove = (e) => {
+        if (!isDragging) return;
+        const x = e.pageX - scrollRef.current.offsetLeft;
+        const scroll = (x - startX) * 1.1;
+        scrollRef.current.scrollLeft = scrollLeftStart - scroll;
+    };
+
+    const handleMouseUp = () => {
+        setIsDragging(false);
+
+        const projectWidth = 350 + 35;
+        const scrollPosition = scrollRef.current.scrollLeft;
+        const nearestSnapPosition = Math.round(scrollPosition / projectWidth) * projectWidth;
+
+        scrollRef.current.scrollTo({ left: nearestSnapPosition, behavior: 'smooth' });
+    };
+
+    const handleMouseLeave = () => {
+        setIsDragging(false);
+    };
+
     useEffect(() => {
         const scrollContainer = scrollRef.current;
         scrollContainer.addEventListener('scroll', Scroll);
@@ -92,8 +128,13 @@ function Projects() {
                 </button>
         )}
         <div 
-            className={`${styles.projects} ${isVisible ? styles.fadeIn : styles.hidden}`} 
+            className={`${styles.projects} ${isVisible ? styles.fadeIn : styles.hidden} ${isDragging ? styles.grabbing : ''}`}
             ref={scrollRef}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseLeave}
+            style={{ scrollSnapType: isSnapping ? 'x mandatory' : 'none' }}
         >
             {
                 projects.map((project, id) => {

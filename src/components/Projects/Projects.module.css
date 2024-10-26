@@ -30,6 +30,15 @@
 
     scroll-snap-type: x mandatory;
     scroll-padding-left: 10px;
+    scroll-behavior: smooth; 
+    
+    cursor: grab;
+    user-select: none;
+}
+
+.grabbing {
+    cursor: grabbing;
+    user-select: none;
 }
 
 .fadeIn {
@@ -237,6 +246,9 @@
         opacity: 1;
         transform: translateX(0);
         transition: none;
+
+        user-select: auto;
+        cursor: auto;
     }
 
     .leftArrow, .rightArrow {
