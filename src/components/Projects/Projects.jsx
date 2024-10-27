@@ -15,6 +15,8 @@ function Projects() {
     const [scrollLeftStart, setScrollLeftStart] = useState(0);
     const [startX, setStartX] = useState(0);
     const [isSnapping, setIsSnapping] = useState(true);
+    const [showTip, setShowTip] = useState(true);
+    const tipTimeoutRef = useRef(null);
 
     const scrollLeft = () => {
         setIsSnapping(true);
@@ -74,6 +76,10 @@ function Projects() {
         setScrollLeftStart(scrollRef.current.scrollLeft);
         setIsSnapping(false);
         scrollRef.current.style.scrollBehavior = 'auto';
+        
+        tipTimeoutRef.current = setTimeout(() => {
+            setShowTip(false);
+        }, 350);
     };
 
     const handleMouseMove = (e) => {
@@ -86,6 +92,8 @@ function Projects() {
     const handleMouseUp = () => {
         setIsDragging(false);
 
+        clearTimeout(tipTimeoutRef.current);
+
         const projectWidth = 350 + 35;
         const scrollPosition = scrollRef.current.scrollLeft;
         const nearestSnapPosition = Math.round(scrollPosition / projectWidth) * projectWidth;
@@ -95,6 +103,7 @@ function Projects() {
 
     const handleMouseLeave = () => {
         setIsDragging(false);
+        clearTimeout(tipTimeoutRef.current);
     };
 
     useEffect(() => {
@@ -121,7 +130,12 @@ function Projects() {
 
   return (
     <section className={styles.container} id="Projects">
-        <h2 className={styles.title}>Projects</h2>
+        <div className={styles.titleWrap}>
+            <h2 className={styles.title}>Projects</h2>
+            <p className={`${styles.tip} ${!showTip ? styles.tipHidden : ''}`}>
+                Tip: drag to scroll
+            </p>
+        </div>
         {!atStart && (
                 <button className={styles.leftArrow} onClick={scrollLeft}>
                     &#10094;

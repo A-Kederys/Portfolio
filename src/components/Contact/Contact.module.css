@@ -36,7 +36,7 @@ footer {
 .links {
     display: flex;
     list-style: none;
-    gap: 35px;
+    gap: 10%;
     width: 50%;
     height: 20vw;
     justify-content: center;
@@ -66,6 +66,8 @@ footer {
     flex-direction: column;
     gap: 15px;
     width: 50%;
+    max-width: 700px; /* Half of 1500px */
+    align-self: center;
 }
 
 .input, .textarea {
@@ -159,6 +161,7 @@ footer {
 
     .form {
         width: 66%;
+        align-self: flex-start;
     }
 
     .container h2 {
@@ -170,6 +173,7 @@ footer {
         flex-direction: row;
         align-self: center;
         height: 15vh;
+        gap: 20%;
     }
 
     .link img {

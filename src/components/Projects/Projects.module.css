@@ -10,9 +10,25 @@
     font-size: 35px;
     font-weight: 600;
     letter-spacing: 1.5px;
-    margin-bottom: 20px;
     text-transform: uppercase;
     font-family: var(--font-barlow);
+}
+
+.titleWrap {
+    display: flex;
+    color: var(--color-text);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tip {
+    opacity: 0.75;
+    transition: 0.5s ease;
+}
+
+.tipHidden {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .projects {
