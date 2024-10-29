@@ -37,6 +37,8 @@
     list-style: none;
     margin-right: 15px;
     align-items: center;
+    max-height: 0;
+    transition: max-height 0.7s ease-in, opacity 1s ease-in;
 }
 
 .menuItems a {
@@ -64,6 +66,28 @@
 
 .menuBtn {
     display: none;
+}
+
+@keyframes slideDown {
+    from {
+        max-height: 0;
+        opacity: 0;
+    }
+    to {
+        max-height: 300px;
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        max-height: 300px;
+        opacity: 1;
+    }
+    to {
+        max-height: 0;
+        opacity: 0;
+    }
 }
 
 @media screen and (max-width: 830px) {
@@ -94,7 +118,6 @@
     }
 
     .menuItems {
-        display: none;
         position: relative;
         flex-direction: column;
         align-items: center;
@@ -113,6 +136,18 @@
 
     .menuOpen {
         display: flex;
+        animation: slideDown 0.7s ease forwards;
+        max-height: 300px;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .menuClose {
+        display: flex;
+        animation: slideUp 0.7s ease forwards;
+        max-height: 0;
+        opacity: 0;
+        pointer-events: none;
     }
 
     .menuItems a::after {

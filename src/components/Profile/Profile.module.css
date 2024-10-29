@@ -56,8 +56,13 @@
 .profileImg {
     max-width: 33%;
     border-radius: 50%;
-    box-shadow: 0 5px 10px 0  var(--color-secondary-d50);
+    box-shadow: 0 5px 10px 0 var(--color-secondary-d50);
     margin: 20px 0;
+    transition: box-shadow 1s ease;
+}
+
+.profileImg:hover {
+    box-shadow: 0 5px 15px 3px var(--color-secondary-d75);
 }
 
 .socials {

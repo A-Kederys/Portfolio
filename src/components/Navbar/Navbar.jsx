@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import styles from "./Navbar.module.css";
 import {getImageURL} from "../../imgPath";
 
 function Navbar() {
 
     const [isMenuOpen, setMenuOpen] = useState(false);
+    const menuRef = useRef(null);
 
     const switchTheme = (e) => {
 
@@ -16,12 +17,28 @@ function Navbar() {
             document.querySelector('body').setAttribute('data-theme', 'dark')
         }
     }
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setMenuOpen(false);
+            }
+        };
+
+        if (isMenuOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [isMenuOpen]);
     
   return (
     <div className={styles.navWrap}>
         <nav className={styles.navbar}>
         <a className={styles.title} href={process.env.NODE_ENV === 'production' ? "/Portfolio/" : "/"}>A-Kederys</a>
-            <div className={styles.menu}> 
+            <div className={styles.menu} ref={menuRef}> 
                 <img 
                     className={styles.menuBtn} 
                     src={ 
@@ -32,7 +49,7 @@ function Navbar() {
                     alt="menu icon" 
                     onClick={() => setMenuOpen(!isMenuOpen)}
                 />              
-                <ul className={`${styles.menuItems} ${isMenuOpen && styles.menuOpen}`}
+                <ul className={`${styles.menuItems} ${isMenuOpen ? styles.menuOpen : styles.menuClose}`}
                     onClick= {() => setMenuOpen(false)} 
                 >
                     <label>

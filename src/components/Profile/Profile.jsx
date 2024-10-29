@@ -5,6 +5,8 @@ import { getImageURL } from '../../imgPath';
 function Profile() {
   const [letters, setLetters] = useState([]);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [transformCoin, setTransformCoin] = useState('');
+  const [transition, setTransition] = useState('');
 
   useEffect(() => {
     const handleResize = () => {
@@ -31,13 +33,40 @@ function Profile() {
     setLetters(letterArray);
   }, []);
 
+  const handleMouseMove = (e) => {
+    if (isSmallScreen) return;
+
+    const { clientX, clientY, target } = e;
+    const { left, top, width, height } = target.getBoundingClientRect();
+
+    const x = clientX - (left + width / 2);
+    const y = clientY - (top + height / 2);
+
+    const rotateY = (x / width) * 45;
+    const rotateX = -(y / height) * 45;
+
+    setTransition('')
+    setTransformCoin(`rotateY(${rotateY}deg) rotateX(${rotateX}deg) translateZ(60px)`);
+  };
+
+  const handleMouseLeave = () => {
+    setTransition('transform 1s ease, box-shadow 1s ease');
+    setTransformCoin('');
+  };
+
 
   return (
     <section className={styles.container}>
       <img 
-        src={getImageURL("profile/profileImg.png")} 
+        src={getImageURL("profile/profileImg.png")}
         alt="profile image" 
         className={styles.profileImg}
+        style={{ 
+          transform: transformCoin,
+          transition: transition
+        }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
       />
       <div className={styles.content}>
       <h1 className={styles.title}>

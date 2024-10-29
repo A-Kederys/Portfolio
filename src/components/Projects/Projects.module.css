@@ -265,6 +265,10 @@
 
         user-select: auto;
         cursor: auto;
+
+        width: 300px;
+        margin: 0 auto;
+        margin-top: 15px;
     }
 
     .leftArrow, .rightArrow {
@@ -277,5 +281,9 @@
     
     .nextImage {
         right: 15px;
+    }
+
+    .tip {
+        visibility: hidden;
     }
 }
