@@ -17,6 +17,7 @@ function Projects() {
     const [isSnapping, setIsSnapping] = useState(true);
     const [showTip, setShowTip] = useState(true);
     const tipTimeoutRef = useRef(null);
+    const imageRefs = useRef([]);
 
     const scrollLeft = () => {
         setIsSnapping(true);
@@ -128,6 +129,30 @@ function Projects() {
         };
     }, []);
 
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const index = imageRefs.current.indexOf(entry.target);
+                    if (index !== -1) {
+                        entry.target.src = getImageURL(projects[index].imageSrc[0]);
+                        observer.unobserve(entry.target);
+                    }
+                }
+            });
+        });
+
+        imageRefs.current.forEach((img) => {
+            if (img) observer.observe(img);
+        });
+
+        return () => {
+            imageRefs.current.forEach((img) => {
+                if (img) observer.unobserve(img);
+            });
+        };
+    }, [projects]);
+
   return (
     <section className={styles.container} id="Projects">
         <div className={styles.titleWrap}>
@@ -155,8 +180,9 @@ function Projects() {
                     return (
                         <div key={id} className={styles.projectContainer}>
                             <div style={{ position: 'relative' }}>
-                                <img 
-                                    src={getImageURL(project.imageSrc[0])} 
+                                <img
+                                    ref={el => imageRefs.current[id] = el} 
+                                    src="" 
                                     alt={`${project.title} image`} 
                                     className={styles.image}
                                     onClick={() => openModal(project.imageSrc)}
