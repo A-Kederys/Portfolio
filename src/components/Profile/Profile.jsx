@@ -57,17 +57,17 @@ function Profile() {
 
   return (
     <section className={styles.container}>
-      <img 
-        src={getImageURL("profile/profileImg.png")}
-        alt="profile image" 
-        className={styles.profileImg}
-        style={{ 
-          transform: transformCoin,
-          transition: transition
-        }}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-      />
+        <img 
+          src={getImageURL("profile/profileImg.webp")}
+          alt="profile image" 
+          className={styles.profileImg}
+          style={{ 
+            transform: transformCoin,
+            transition: transition
+          }}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+        />
       <div className={styles.content}>
       <h1 className={styles.title}>
           {isSmallScreen ? (
