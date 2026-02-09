@@ -1,113 +1,115 @@
 import React, { useEffect, useRef } from 'react';
-import styles from "./About.module.css"
+import styles from "./About.module.css";
 import { getImageURL } from '../../imgPath';
-//https://icons8.com/icons/
-import skills from "../../data/skills.json"
+import skills from "../../data/skills.json";
 
-function About() {
-    const contentRef = useRef(null);
+/* Originalios technologijų spalvos – naudojamos tik hover būsenoje */
+const SKILL_HOVER_COLORS = {
+  HTML: '#E34F26',
+  CSS: '#1572B6',
+  JavaScript: '#F7DF1E',
+  React: '#61DAFB',
+  'Node.js': '#339933',
+  PHP: '#777BB4',
+  Python: '#3776AB',
+  MySQL: '#4479A1',
+  Laravel: '#FF2D20',
+  'Tailwind CSS': '#06B6D4',
+};
 
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth < 830) {
-                if (contentRef.current) {
-                    contentRef.current.style.opacity = '1';
-                    contentRef.current.style.transform = 'none';
-                }
-            }
-        };
+function getTitlePositionClass(cellX, cellY) {
+  if (cellX === 1 && cellY === 0) return styles.titleTopRight;
+  if (cellX === 0 && cellY === 1) return styles.titleBottomLeft;
+  if (cellX === 1 && cellY === 1) return styles.titleBottomRight;
+  return '';
+}
 
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting && window.innerWidth >= 830) {
-                    contentRef.current.style.opacity = '1'; 
-                    contentRef.current.style.transform = 'translateX(0)';
-                }
-            },
-            { threshold: 0.2 } // trigger when % of content visible
-        );
+function About({ cellX = 1, cellY = 0 }) {
+  const contentRef = useRef(null);
+  const titleClass = [styles.title, getTitlePositionClass(cellX, cellY)].filter(Boolean).join(' ');
 
-        if (contentRef.current) {
-            observer.observe(contentRef.current);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 830 && contentRef.current) {
+        contentRef.current.style.opacity = '1';
+        contentRef.current.style.transform = 'none';
+      }
+    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && window.innerWidth >= 830 && contentRef.current) {
+          contentRef.current.style.opacity = '1';
+          contentRef.current.style.transform = 'translateY(0)';
         }
-
-        window.addEventListener('resize', handleResize);
-        handleResize();
-
-        return () => {
-            if (contentRef.current) {
-                observer.unobserve(contentRef.current);
-            }
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
+      },
+      { threshold: 0.15 }
+    );
+    if (contentRef.current) observer.observe(contentRef.current);
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => {
+      if (contentRef.current) observer.unobserve(contentRef.current);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <section className={styles.container} id="About">
-        <h2 className={styles.title}>About</h2>
-        <div className={styles.content} ref={contentRef}>
-            <ul className={styles.aboutItems}>
-                <li className={styles.aboutItem}>
-                    <div className={styles.aboutItemTitle}>
-                        <img src={getImageURL("about/education.png")} alt="education icon" />
-                        <h3>Education </h3>
-                    </div>
-                    <p>
-                        I’m a third-year Software Systems student at Kauno Kolegija who specializes 
-                        in programming languages and frameworks for web and software development. 
-                        My coursework and personal projects, available on my  
-                        <a href="https://github.com/A-Kederys" target="_blank"> GitHub</a>, 
-                        demonstrate my development skills.
-                    </p>
-                </li>
-                <li className={`${styles.aboutItem} ${styles.aboutItemRight}`}>
-                    <div className={styles.aboutItemTitle}>
-                        <img src={getImageURL("about/goals.png")} alt="goals icon" />
-                        <h3>Career Goals</h3>
-                    </div>
-                        <p>
-                            With a diverse background in civil engineering, I transitioned into software development due 
-                            to my passion for technology and problem-solving. My goal is to continue refining my skills 
-                            and deepening my knowledge in software systems.
-                        </p>
-                </li>
-            </ul>
-            
-            <ul className={styles.aboutItems}>
-            <li className={styles.aboutItem}>
-                    <div className={styles.aboutItemTitle}>
-                        <img src={getImageURL("about/skills.png")} alt="skills icon" />
-                        <h3>Skills</h3>
-                    </div>
-                    <div className={styles.skills}>{
-                        skills.map((skill, id) => {
-                            return (
-                            <div className={styles.skill} key={id}>
-                                <div className={styles.skillContainer}>
-                                    <img src={getImageURL(skill.imageSrc)} 
-                                    alt={`${skill.title} logo`} />
-                                </div>
-                                <p>{skill.title}</p>
-                            </div>
-                            );
-                        })}
-                    </div> 
-                </li>
-                <li className={`${styles.aboutItem} ${styles.aboutItemRight}`}>
-                    <div className={styles.aboutItemTitle}>
-                        <img src={getImageURL("about/hobbies.png")} alt="hobbies icon" />
-                        <h3>Hobbies</h3>
-                    </div>
-                        <p>
-                            Apart from coding, I also enjoy regular gym workouts, which have instilled a strong work ethic, 
-                            and I am an avid movie enthusiast, bringing creativity and attention to detail into my 
-                            problem-solving approach.
-                        </p>
-                </li>
-            </ul>
+      <h2 className={titleClass}>About</h2>
+      <div className={styles.content} ref={contentRef}>
+        <div className={styles.bentoGrid}>
+          {/* Education – kairė pusė, pozicijos 1+3 (dvi eilutės) */}
+          <div className={`${styles.bentoBlock} ${styles.educationTallBlock}`}>
+            <div className={styles.blockHeader}>
+              <img src={getImageURL("about/education.png")} alt="" className={styles.blockIcon} />
+              <h3 className={styles.blockHeading}>Education</h3>
+            </div>
+            <p>
+              I have recently completed my studies in Software Systems at Kauno Kolegija. Throughout my academic journey, I focused on web and software development technologies, gaining hands-on experience with various programming languages and frameworks. My coursework and personal projects, available on my <a href="https://github.com/A-Kederys" target="_blank" rel="noreferrer">GitHub</a>,  demonstrate my development skills.
+            </p>
+          </div>
+
+          {/* Career Goals – dešinė viršuje, pozicija 2 */}
+          <div className={`${styles.bentoBlock} ${styles.careerBlock}`}>
+            <div className={styles.blockHeader}>
+              <img src={getImageURL("about/goals.png")} alt="" className={styles.blockIcon} />
+              <h3 className={styles.blockHeading}>Career Goals</h3>
+            </div>
+            <p>
+              With a diverse background in civil engineering, I transitioned into the technology field driven by a strong interest in problem-solving and modern digital solutions. My career goal is to grow as a technology professional by continuously expanding my technical skill set and staying adaptable in a rapidly evolving tech landscape.
+            </p>
+          </div>
+          {/* Hobbies – dešinė apačioje, pozicija 4 */}
+          <div className={`${styles.bentoBlock} ${styles.hobbiesBlock}`}>
+            <div className={styles.blockHeader}>
+              <img src={getImageURL("about/hobbies.png")} alt="" className={styles.blockIcon} />
+              <h3 className={styles.blockHeading}>Hobbies</h3>
+            </div>
+            <p>
+              Apart from technology, I also enjoy regular gym workouts, which have helped build discipline and consistency. I am also an avid movie enthusiast, bringing creativity and attention to detail into my problem-solving approach.
+            </p>
+          </div>
+
+          {/* Skills – pilnas plotis apačioje, be antraštės */}
+          <div className={`${styles.bentoBlock} ${styles.skillsBlock}`}>
+            <div className={styles.skillPills}>
+              {skills.map((skill, id) => (
+                <div
+                  className={styles.skillPill}
+                  key={id}
+                  data-skill={skill.title}
+                  style={SKILL_HOVER_COLORS[skill.title] ? { '--skill-hover': SKILL_HOVER_COLORS[skill.title] } : undefined}
+                >
+                  <img src={getImageURL(skill.imageSrc)} alt="" />
+                  <span>{skill.title}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-  )
+  );
 }
 
-export default About
+export default About;

@@ -2,21 +2,15 @@ import React, {useState, useRef, useEffect} from 'react';
 import styles from "./Navbar.module.css";
 import {getImageURL} from "../../imgPath";
 
-function Navbar() {
+function Navbar({ moveTo }) {
 
     const [isMenuOpen, setMenuOpen] = useState(false);
+
+    const goTo = (x, y) => {
+        if (typeof moveTo === 'function') moveTo(x, y);
+        setMenuOpen(false);
+    };
     const menuRef = useRef(null);
-
-    const switchTheme = (e) => {
-
-        if(e.target.checked) {
-            document.querySelector('body').setAttribute('data-theme', 'light')
-        }
-
-        else {
-            document.querySelector('body').setAttribute('data-theme', 'dark')
-        }
-    }
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -50,24 +44,12 @@ function Navbar() {
                     onClick={() => setMenuOpen(!isMenuOpen)}
                 />              
                 <ul className={`${styles.menuItems} ${isMenuOpen ? styles.menuOpen : styles.menuClose}`}
-                    onClick= {() => setMenuOpen(false)} 
+                    onClick={() => setMenuOpen(false)}
                 >
-                    <label>
-                        <input className='toggle-checkbox' type='checkbox' onChange={switchTheme}></input>
-                        <div className='toggle-slot'>
-                            <div className='sun-icon-wrapper'>
-                            <div className="iconify sun-icon" data-icon="feather-sun" data-inline="false"></div>
-                            </div>
-                            <div className='toggle-button'></div>
-                            <div className='moon-icon-wrapper'>
-                            <div className="iconify moon-icon" data-icon="feather-moon" data-inline="false"></div>
-                            </div>
-                        </div>
-                    </label>
-
-                    <li><a href="#About">About</a></li>
-                    <li><a href="#Projects">Projects</a></li>
-                    <li><a href="#Contact">Contact</a></li>
+                    <li><button type="button" className={styles.navLinkBtn} onClick={() => goTo(0, 0)}>Almantas K.</button></li>
+                    <li><button type="button" className={styles.navLinkBtn} onClick={() => goTo(1, 0)}>About</button></li>
+                    <li><button type="button" className={styles.navLinkBtn} onClick={() => goTo(1, 1)}>Projects</button></li>
+                    <li><button type="button" className={styles.navLinkBtn} onClick={() => goTo(0, 1)}>Contact</button></li>
 
                 </ul>
             </div>

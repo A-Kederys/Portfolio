@@ -1,231 +1,191 @@
-import React, { useRef, useState, useEffect } from 'react'
-import projects from "../../data/projects.json"
-import { getImageURL } from '../../imgPath'
-import styles from "./Projects.module.css"
+import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, EffectCoverflow } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/effect-coverflow';
+import projects from '../../data/projects.json';
+import { getImageURL } from '../../imgPath';
+import styles from './Projects.module.css';
 
-function Projects() {
-    const scrollRef = useRef(null);
-    const [atStart, setAtStart] = useState(true);
-    const [atEnd, setAtEnd] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [selectedProjectImages, setSelectedProjectImages] = useState([]);
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const [isVisible, setIsVisible] = useState(false);
-    const [isDragging, setIsDragging] = useState(false);
-    const [scrollLeftStart, setScrollLeftStart] = useState(0);
-    const [startX, setStartX] = useState(0);
-    const [isSnapping, setIsSnapping] = useState(true);
-    const [showTip, setShowTip] = useState(true);
-    const tipTimeoutRef = useRef(null);
-    const imageRefs = useRef([]);
+function getTitlePositionClass(cellX, cellY) {
+  if (cellX === 1 && cellY === 0) return styles.titleTopRight;
+  if (cellX === 0 && cellY === 1) return styles.titleBottomLeft;
+  if (cellX === 1 && cellY === 1) return styles.titleBottomRight;
+  return '';
+}
 
-    const scrollLeft = () => {
-        setIsSnapping(true);
-        scrollRef.current.scrollBy({ left: -700, behavior: 'smooth' });
-      };
+function Projects({ cellX = 1, cellY = 1 }) {
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const [selectedProjectImages, setSelectedProjectImages] = useState([]);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [detailsProject, setDetailsProject] = useState(null);
+  const titleClass = [styles.title, getTitlePositionClass(cellX, cellY)].filter(Boolean).join(' ');
 
-    const scrollRight = () => {
-        setIsSnapping(true);
-        scrollRef.current.scrollBy({ left: 700, behavior: 'smooth' });
-      };
+  const openImageModal = (imageArray, e) => {
+    e?.stopPropagation();
+    setSelectedProjectImages(imageArray);
+    setCurrentImageIndex(0);
+    setIsImageModalOpen(true);
+    document.body.classList.add(styles.modalOpen);
+  };
 
-    const Scroll = () => {
-        const scrollContainer = scrollRef.current;
-        const scrollLeftValue = scrollContainer.scrollLeft;
-        const scrollWidth = scrollContainer.scrollWidth;
-        const clientWidth = scrollContainer.clientWidth;
+  const closeImageModal = () => {
+    setIsImageModalOpen(false);
+    setSelectedProjectImages([]);
+    document.body.classList.remove(styles.modalOpen);
+  };
 
-        setAtStart(scrollLeftValue === 0);
+  const openDetails = (project, e) => {
+    e?.stopPropagation();
+    setDetailsProject(project);
+  };
 
-        setAtEnd(scrollLeftValue + clientWidth >= scrollWidth);
-    };
+  const closeDetails = () => setDetailsProject(null);
 
-    const openModal = (imageArray) => {
-        setSelectedProjectImages(imageArray);
-        setCurrentImageIndex(0);
-        setIsModalOpen(true);
+  const showNextImage = (e) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev + 1) % selectedProjectImages.length);
+  };
 
-        document.body.classList.add(styles.modalOpen);
-    };
-
-    const closeModal = () => {
-        setIsModalOpen(false);
-        setSelectedProjectImages([]);
-        setCurrentImageIndex(0);
-
-        document.body.classList.remove(styles.modalOpen);
-    };
-
-    const showNextImage = (e) => {
-        e.stopPropagation();
-        setCurrentImageIndex((prevIndex) => 
-            (prevIndex + 1) % selectedProjectImages.length
-        );
-    };
-
-    const showPreviousImage = (e) => {
-        e.stopPropagation();
-        setCurrentImageIndex((prevIndex) => 
-            (prevIndex - 1 + selectedProjectImages.length) % selectedProjectImages.length
-        );
-    };
-
-    //left click scrolling
-    const handleMouseDown = (e) => {
-        setIsDragging(true);
-        setStartX(e.pageX - scrollRef.current.offsetLeft);
-        setScrollLeftStart(scrollRef.current.scrollLeft);
-        setIsSnapping(false);
-        scrollRef.current.style.scrollBehavior = 'auto';
-        
-        tipTimeoutRef.current = setTimeout(() => {
-            setShowTip(false);
-        }, 350);
-    };
-
-    const handleMouseMove = (e) => {
-        if (!isDragging) return;
-        const x = e.pageX - scrollRef.current.offsetLeft;
-        const scroll = (x - startX) * 1.1;
-        scrollRef.current.scrollLeft = scrollLeftStart - scroll;
-    };
-
-    const handleMouseUp = () => {
-        setIsDragging(false);
-
-        clearTimeout(tipTimeoutRef.current);
-
-        const projectWidth = 350 + 35;
-        const scrollPosition = scrollRef.current.scrollLeft;
-        const nearestSnapPosition = Math.round(scrollPosition / projectWidth) * projectWidth;
-
-        scrollRef.current.scrollTo({ left: nearestSnapPosition, behavior: 'smooth' });
-    };
-
-    const handleMouseLeave = () => {
-        setIsDragging(false);
-        clearTimeout(tipTimeoutRef.current);
-    };
-
-    useEffect(() => {
-        const scrollContainer = scrollRef.current;
-        scrollContainer.addEventListener('scroll', Scroll);
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                }
-            },
-            { threshold: 0.2 }
-        );
-
-        observer.observe(scrollContainer);
-
-        return () => {
-            scrollContainer.removeEventListener('scroll', Scroll);
-
-            observer.unobserve(scrollContainer);
-        };
-    }, []);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const index = imageRefs.current.indexOf(entry.target);
-                    if (index !== -1) {
-                        entry.target.src = getImageURL(projects[index].imageSrc[0]);
-                        observer.unobserve(entry.target);
-                    }
-                }
-            });
-        });
-
-        imageRefs.current.forEach((img) => {
-            if (img) observer.observe(img);
-        });
-
-        return () => {
-            imageRefs.current.forEach((img) => {
-                if (img) observer.unobserve(img);
-            });
-        };
-    }, [projects]);
+  const showPreviousImage = (e) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev - 1 + selectedProjectImages.length) % selectedProjectImages.length);
+  };
 
   return (
     <section className={styles.container} id="Projects">
-        <div className={styles.titleWrap}>
-            <h2 className={styles.title}>Projects</h2>
-            <p className={`${styles.tip} ${!showTip ? styles.tipHidden : ''}`}>
-                Tip: drag to scroll
-            </p>
-        </div>
-        {!atStart && (
-                <button className={styles.leftArrow} onClick={scrollLeft}>
-                    &#10094;
-                </button>
-        )}
-        <div 
-            className={`${styles.projects} ${isVisible ? styles.fadeIn : styles.hidden} ${isDragging ? styles.grabbing : ''}`}
-            ref={scrollRef}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseLeave}
-            style={{ scrollSnapType: isSnapping ? 'x mandatory' : 'none' }}
+      <h2 className={titleClass}>Projects</h2>
+      <div className={styles.sliderWrap}>
+        <button id="projects-prev" type="button" className={styles.arrow} aria-label="Previous project">
+          <span className={styles.arrowSymbol}>‹</span>
+        </button>
+        <div className={styles.sliderBox}>
+        <Swiper
+          className={styles.slider}
+          modules={[Navigation, EffectCoverflow]}
+          effect="coverflow"
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 24,
+            depth: 48,
+            scale: 0.68,
+            modifier: 1,
+            slideShadows: false,
+          }}
+          navigation={{
+            prevEl: '#projects-prev',
+            nextEl: '#projects-next',
+          }}
+          loop
+          slidesPerView="auto"
+          centeredSlides
+          spaceBetween={24}
+          speed={500}
+          grabCursor
         >
-            {
-                projects.map((project, id) => {
-                    return (
-                        <div key={id} className={styles.projectContainer}>
-                            <div style={{ position: 'relative' }}>
-                                <img
-                                    ref={el => imageRefs.current[id] = el} 
-                                    src="" 
-                                    alt={`${project.title} image`} 
-                                    className={styles.image}
-                                    onClick={() => openModal(project.imageSrc)}
-                                />
-                                <div className={styles.overlay}>View More</div>
-                            </div>
-                            <h3 className={styles.projectTitle}>{project.title}</h3>
-                            <p className={styles.description}>{project.description}</p>
-                            <ul className={styles.skills}>
-                                {
-                                project.skills.map((skill, id) => {
-                                    return (
-                                        <li key={id} className={styles.skill}>{skill}</li>
-                                    )
-                                })
-                                }
-                            </ul>
-                            <div className={styles.links}>
-                                <a href={project.source} className={styles.link}  target="_blank">Source</a>
-                            </div>
-                        </div>
-                    )
-                })
-            }
-        </div>
-        {!atEnd && (
-                <button className={styles.rightArrow} onClick={scrollRight}>
-                    &#10095;
-                </button>
-        )}
-        {isModalOpen && (
-                <div className={styles.modal} onClick={closeModal}>
-                    <button className={styles.prevImage} onClick={showPreviousImage}>&#10094;</button>
-                    <img 
-                        src={getImageURL(selectedProjectImages[currentImageIndex])} 
-                        alt="Project Full view" 
-                        className={styles.modalImage} 
-                    />
-                    <button className={styles.nextImage} onClick={showNextImage}>&#10095;</button>
+          {projects.map((project) => (
+            <SwiperSlide key={project.title}>
+              <article
+                className={styles.projectCard}
+                onClick={(e) => { e.stopPropagation(); openDetails(project); }}
+              >
+                <div className={styles.cardImageWrap}>
+                  <img src={getImageURL(project.imageSrc[0])} alt="" className={styles.cardImage} />
+                  <button
+                    type="button"
+                    className={styles.galleryBtn}
+                    onClick={(e) => openImageModal(project.imageSrc, e)}
+                    aria-label="Open gallery"
+                  >
+                    Gallery
+                  </button>
                 </div>
+                <div className={styles.cardBody}>
+                  <h3 className={styles.cardTitle}>{project.title}</h3>
+                  {project.description && (
+                    <p className={styles.cardDescription}>{project.description}</p>
+                  )}
+                  {project.skills?.length > 0 && (
+                    <div className={styles.tags}>
+                      {project.skills.map((skill, i) => (
+                        <span key={i} className={styles.tag}>{skill}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </article>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        </div>
+        <button id="projects-next" type="button" className={styles.arrow} aria-label="Next project">
+          <span className={styles.arrowSymbol}>›</span>
+        </button>
+      </div>
+
+      {detailsProject &&
+        createPortal(
+          <div className={styles.detailsOverlay} onClick={closeDetails}>
+            <div className={styles.detailsModal} onClick={(e) => e.stopPropagation()}>
+              <button type="button" className={styles.detailsClose} onClick={closeDetails} aria-label="Close">
+                ×
+              </button>
+              <img src={getImageURL(detailsProject.imageSrc[0])} alt="" className={styles.detailsImage} />
+              <h3 className={styles.detailsTitle}>{detailsProject.title}</h3>
+              <p className={styles.detailsDescription}>{detailsProject.description}</p>
+              <div className={styles.detailsLinks}>
+                {detailsProject.source && (
+                  <a href={detailsProject.source} target="_blank" rel="noreferrer" className={styles.detailsLink}>
+                    Source
+                  </a>
+                )}
+                <button
+                  type="button"
+                  className={styles.detailsGalleryBtn}
+                  onClick={() => {
+                    closeDetails();
+                    setSelectedProjectImages(detailsProject.imageSrc);
+                    setCurrentImageIndex(0);
+                    setIsImageModalOpen(true);
+                    document.body.classList.add(styles.modalOpen);
+                  }}
+                >
+                  Gallery
+                </button>
+              </div>
+            </div>
+          </div>,
+          document.body
+        )}
+
+      {isImageModalOpen &&
+        createPortal(
+          <div className={styles.modal} onClick={closeImageModal}>
+            <span className={styles.modalCounter} aria-live="polite">
+              {currentImageIndex + 1}/{selectedProjectImages.length}
+            </span>
+            <button
+              type="button"
+              className={styles.modalClose}
+              onClick={(e) => { e.stopPropagation(); closeImageModal(); }}
+              aria-label="Close gallery"
+            >
+              ×
+            </button>
+            <button type="button" className={styles.prevImage} onClick={showPreviousImage} aria-label="Previous">
+              &#10094;
+            </button>
+            <img src={getImageURL(selectedProjectImages[currentImageIndex])} alt="Project" className={styles.modalImage} onClick={(e) => e.stopPropagation()} />
+            <button type="button" className={styles.nextImage} onClick={showNextImage} aria-label="Next">
+              &#10095;
+            </button>
+          </div>,
+          document.body
         )}
     </section>
-  )
+  );
 }
 
-export default Projects
+export default Projects;

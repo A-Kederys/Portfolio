@@ -16,7 +16,8 @@
     "@fontsource/barlow": "^5.1.0",
     "@fontsource/mulish": "^5.1.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "swiper": "^12.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",

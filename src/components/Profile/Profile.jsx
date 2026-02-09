@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from "./Profile.module.css";
 import { getImageURL } from '../../imgPath';
 
-function Profile() {
+function Profile({ moveTo }) {
   const [letters, setLetters] = useState([]);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [transformCoin, setTransformCoin] = useState('');
@@ -57,10 +57,32 @@ function Profile() {
 
   return (
     <section className={styles.container}>
+      <div className={styles.cornerSocials}>
+        <ul className={styles.links}>
+          <li className={styles.link}>
+            <a href="https://www.facebook.com/Almantas.Kederys.1/" target="_blank" rel="noreferrer">
+              <img src={getImageURL("contacts/facebook.png")} alt="facebook icon" />
+            </a>
+          </li>
+          <li className={styles.link}>
+            <a href="mailto:almantaskederys@gmail.com">
+              <img src={getImageURL("contacts/gmail.png")} alt="gmail icon" />
+            </a>
+          </li>
+          <li className={styles.link}>
+            <a href="https://github.com/A-Kederys" target="_blank" rel="noreferrer">
+              <img src={getImageURL("contacts/github.png")} alt="github icon" />
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div className={styles.heroRow}>
         <img 
           src={getImageURL("profile/profileImg.webp")}
           alt="profile image" 
           className={styles.profileImg}
+          draggable={false}
+          onContextMenu={(e) => e.preventDefault()}
           style={{ 
             transform: transformCoin,
             transition: transition
@@ -68,8 +90,8 @@ function Profile() {
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
         />
-      <div className={styles.content}>
-      <h1 className={styles.title}>
+        <div className={styles.content}>
+          <h1 className={styles.title}>
           {isSmallScreen ? (
             'Almantas Kederys'
           ) : (
@@ -89,34 +111,14 @@ function Profile() {
           )}
         </h1>
         <p className={styles.description}>
-          Software systems student at Kauno Kolegija
-          Higher Education Institution. Scroll below to learn
-          more!
+          Software Systems Graduate focused on technology, digital systems, and problem-solving. Scroll below to learn more!
         </p>
-        <a href="#Contact" className={styles.contactBtn}>Contact Me</a>
-      </div>
-
-      <div className={styles.socials}>
-        <ul className={styles.links}>
-          <li className={styles.link}>
-          <a href="https://www.facebook.com/Almantas.Kederys.1/" target="_blank">
-            <img src={getImageURL("contacts/facebook.png")} alt="facebook icon" />
-          </a>
-          </li>
-          <li className={styles.link}>
-          <a href="mailto:almantaskederys@gmail.com">
-            <img src={getImageURL("contacts/gmail.png")} alt="gmail icon" />
-          </a>
-          </li>
-          <li className={styles.link}>
-          <a href="https://github.com/A-Kederys" target="_blank">
-            <img src={getImageURL("contacts/github.png")} alt="github icon" />
-          </a>
-          </li>
-        </ul>
-      </div>
-      <div>
-        
+        {moveTo ? (
+          <button type="button" className={styles.contactBtn} onClick={() => moveTo(0, 1)}>Contact Me</button>
+        ) : (
+          <a href="#Contact" className={styles.contactBtn}>Contact Me</a>
+        )}
+        </div>
       </div>
     </section>
     

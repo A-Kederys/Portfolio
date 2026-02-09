@@ -1,26 +1,85 @@
+/* Design tokens – modern portfolio system */
 :root {
-    --color-text: #e2dddd;
-    --color-primary: #FFFFFF;
-    --color-bg: #1E1E1E;
+  /* Colors – dark default */
+  --color-bg: #0c0c0f;
+  --color-bg-elevated: #141419;
+  --color-surface: rgba(255, 255, 255, 0.04);
+  --color-surface-hover: rgba(255, 255, 255, 0.08);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.16);
 
-    --color-secondary-d: #F2545B;
-    --color-secondary-d75: rgba(242,84,91, 0.75);
-    --color-secondary-d50: rgba(242,84,91, 0.50);
+  --color-text: #e4e4e7;
+  --color-text-muted: #a1a1aa;
+  --color-primary: #fafafa;
 
-    --font-barlow: "Barlow";
-    /*
-    --color-secondary-d: #FF6F61;
-    */
+  --color-accent: #f43f5e;
+  --color-accent-muted: rgba(244, 63, 94, 0.5);
+  --color-accent-soft: rgba(244, 63, 94, 0.12);
+
+  /* Typography */
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+
+  --text-xs: clamp(0.8125rem, 1.6vw, 0.9375rem);
+  --text-sm: clamp(0.9375rem, 2vw, 1.0625rem);
+  --text-base: clamp(1.0625rem, 2.2vw, 1.25rem);
+  --text-lg: clamp(1.25rem, 2.5vw, 1.5rem);
+  --text-xl: clamp(1.5rem, 3vw, 1.75rem);
+  --text-2xl: clamp(1.75rem, 3.5vw, 2.25rem);
+  --text-3xl: clamp(2.25rem, 4.5vw, 3rem);
+  --text-4xl: clamp(2.75rem, 5.5vw, 3.5rem);
+  --text-5xl: clamp(3rem, 7vw, 4.5rem);
+
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --leading-tight: 1.2;
+  --leading-snug: 1.35;
+  --leading-normal: 1.5;
+
+  /* Spacing & radius */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 0.2s;
+  --duration-normal: 0.35s;
+  --duration-slow: 0.6s;
 }
 
-[data-theme='dark'] {
-    --color-text: #e2dddd;
-    --color-primary: #FFFFFF;
-    --color-bg: #1E1E1E;
+[data-theme="dark"] {
+  --color-bg: #0c0c0f;
+  --color-bg-elevated: #141419;
+  --color-text: #e4e4e7;
+  --color-primary: #fafafa;
+  --color-accent: #f43f5e;
 }
 
-[data-theme='light'] {
-    --color-text: #2F2F2F;
-    --color-primary: #282828;
-    --color-bg: #FAFAFA;
+[data-theme="light"] {
+  --color-bg: #fafafa;
+  --color-bg-elevated: #ffffff;
+  --color-surface: rgba(0, 0, 0, 0.04);
+  --color-surface-hover: rgba(0, 0, 0, 0.08);
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-strong: rgba(0, 0, 0, 0.16);
+  --color-text: #27272a;
+  --color-text-muted: #71717a;
+  --color-primary: #18181b;
+  --color-accent: #e11d48;
+  --color-accent-muted: rgba(225, 29, 72, 0.5);
+  --color-accent-soft: rgba(225, 29, 72, 0.1);
 }

@@ -12,10 +12,10 @@
     position: relative;
     height: 2.5em;
     width: 5em;
-    border: 1.25px solid var(--color-secondary-d50);
+    border: 1.25px solid var(--color-accent-muted);
     border-radius: 2.5em;
     background-color: var(--color-bg);
-    box-shadow: 0px 2.5px 6.25px var(--color-secondary-d50);
+    box-shadow: 0px 2.5px 6.25px var(--color-accent-muted);
     transform: scale(0.9);
     transition: background-color 250ms, transform 0.3s;
   }

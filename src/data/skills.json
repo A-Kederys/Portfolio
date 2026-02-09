@@ -1,34 +1,12 @@
 [
-    {
-        "title": "HTML",
-        "imageSrc": "skills/html.png"
-    },
-    {
-        "title": "CSS",
-        "imageSrc": "skills/css.png"
-    },
-    {
-        "title": "MySQL",
-        "imageSrc": "skills/mysql.png"
-    },
-    {
-        "title": "JavaScript",
-        "imageSrc": "skills/javascript.png"
-    },
-    {
-        "title": "PHP",
-        "imageSrc": "skills/php.png"
-    },
-    {
-        "title": "Python",
-        "imageSrc": "skills/python.png"
-    },
-    {
-        "title": "React",
-        "imageSrc": "skills/react.png"
-    },
-    {
-        "title": "Node.js",
-        "imageSrc": "skills/nodejs.png"
-    }
-  ]
+  {"title": "HTML", "imageSrc": "skills/html.png"},
+  {"title": "CSS", "imageSrc": "skills/css.png"},
+  {"title": "MySQL", "imageSrc": "skills/mysql.png"},
+  {"title": "JavaScript", "imageSrc": "skills/javascript.png"},
+  {"title": "PHP", "imageSrc": "skills/php.png"},
+  {"title": "Python", "imageSrc": "skills/python.png"},
+  {"title": "React", "imageSrc": "skills/react.png"},
+  {"title": "Node.js", "imageSrc": "skills/nodejs.png"},
+  {"title": "Laravel", "imageSrc": "skills/laravel.png"},
+  {"title": "Tailwind CSS", "imageSrc": "skills/tailwind.png"}
+]

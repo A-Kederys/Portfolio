@@ -1,10 +1,9 @@
 [
     {
-      "title": "Battleship Game",
-      "imageSrc": ["projects/battleship1.webp", "projects/battleship2.webp", "projects/battleship3.webp"],
-      "description": "Game where players compete against a computer by guessing the location of randomly placed ships.",
-      "skills": ["Node.js", "React"],
-      "source": "https://github.com/A-Kederys/Battleship-game"
+      "title": "Cinema Platform (Bachelor)",
+      "imageSrc": ["projects/cinema1.webp", "projects/cinema2.webp", "projects/cinema3.webp", "projects/cinema4.webp", "projects/cinema5.webp", "projects/cinema6.webp", "projects/cinema7.webp", "projects/cinema8.webp", "projects/cinema9.webp", "projects/cinema10.webp", "projects/cinema11.webp", "projects/cinema12.webp"],
+      "description": "Cinema platform with public profiles, ticket reservations, and personalized movie recommendations.",
+      "skills": ["Laravel", "Tailwind", "Alpine.js", "TMDB API"]
     },
     {
       "title": "Digital Diaries",
@@ -26,6 +25,13 @@
       "description": "Personal movie review webpage showcasing top movie picks by genre.",
       "skills": ["HTML", "CSS"],
       "source": "https://github.com/A-Kederys/Movie-recommendations"
+    },
+    {
+      "title": "Battleship Game",
+      "imageSrc": ["projects/battleship1.webp", "projects/battleship2.webp", "projects/battleship3.webp"],
+      "description": "Game where players compete against a computer by guessing the location of randomly placed ships.",
+      "skills": ["Node.js", "React"],
+      "source": "https://github.com/A-Kederys/Battleship-game"
     },
     {
       "title": "Twitch Hangman Guesser",

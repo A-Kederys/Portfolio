@@ -1,0 +1,51 @@
+@import "../../variables.css";
+
+.button {
+  position: absolute;
+  z-index: 20;
+  pointer-events: auto; /* mygtukai vis dar spaudžiami */
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  font-family: var(--font-sans);
+  color: var(--color-primary);
+  background: var(--color-surface-hover);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 0;
+  cursor: pointer;
+  transition: background var(--duration-fast) ease, border-color var(--duration-fast) ease,
+    box-shadow var(--duration-fast) ease;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  letter-spacing: 0.02em;
+}
+
+.button:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.button:active {
+  opacity: 0.9;
+}
+
+.topLeft {
+  top: var(--space-6);
+  left: var(--space-6);
+}
+
+.topRight {
+  top: var(--space-6);
+  right: var(--space-6);
+}
+
+.bottomLeft {
+  bottom: var(--space-6);
+  left: var(--space-6);
+}
+
+.bottomRight {
+  bottom: var(--space-6);
+  right: var(--space-6);
+}

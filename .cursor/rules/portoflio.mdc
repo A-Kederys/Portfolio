@@ -1,0 +1,25 @@
+---
+alwaysApply: true
+---
+
+Markdown
+# Project Rules & Standards
+
+## Tech Stack
+- React (Functional components, Hooks)
+- Vite
+- CSS Modules (Strictly avoid global CSS unless for resets)
+
+## Coding Standards
+- Use CSS Modules for all styling: `import styles from './MyComponent.module.css';`
+- Keep components small and focused.
+- All layout calculations should be based on `100vw` and `100vh`.
+
+## UI/UX & Design Guidelines
+- **Layout:** Implement a 2x2 grid system where each section is exactly 100vw/100vh.
+- **Scroll:** Disable global window scrolling (`overflow: hidden`). Navigation must happen via `transform: translate`.
+- **Color Palette:** Follow the 60-30-10 rule. 
+  - Neutral Base: #121212 (Backgrounds)
+  - Secondary: #1e1e1e (Cards/Sections)
+  - Accent: [Tavo spalva, pvz. #646cff] (Interactions/Highlights)
+- **Typography:** Modern sans-serif, high contrast for readability.
