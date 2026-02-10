@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, EffectCoverflow } from 'swiper/modules';
@@ -22,6 +22,15 @@ function Projects({ cellX = 1, cellY = 1 }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [detailsProject, setDetailsProject] = useState(null);
   const titleClass = [styles.title, getTitlePositionClass(cellX, cellY)].filter(Boolean).join(' ');
+
+  useEffect(() => {
+    if (!isImageModalOpen || !selectedProjectImages.length) return;
+
+    selectedProjectImages.forEach((imagePath) => {
+      const img = new Image();
+      img.src = getImageURL(imagePath);
+    });
+  }, [isImageModalOpen, selectedProjectImages]);
 
   const openImageModal = (imageArray, e) => {
     e?.stopPropagation();
