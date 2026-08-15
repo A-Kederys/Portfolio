@@ -6,11 +6,27 @@
       "skills": ["Laravel", "Tailwind", "Alpine.js", "TMDB API"]
     },
     {
+      "title": "To-Do List",
+      "imageSrc": ["projects/bucket1.webp", "projects/bucket2.webp"],
+      "description": "Add a task, then mark it done.",
+      "skills": ["React", "CSS"],
+      "preview": "https://a-kederys.github.io/Bucket-goals/",
+      "source": "https://github.com/A-Kederys/bucket-goals"
+    },
+    {
       "title": "Digital Diaries",
       "imageSrc": ["projects/diaries1.webp", "projects/diaries2.webp", "projects/diaries3.webp"],
       "description": "Platform where users can share their personal moments with others.",
       "skills": ["PHP", "C#", "SQL"],
       "source": "https://github.com/A-Kederys/Digital-diaries"
+    },
+    {
+      "title": "Forms",
+      "imageSrc": ["projects/forms1.webp"],
+      "description": "Responsive login and registration forms with a clean layout and polished user experience.",
+      "skills": ["React", "CSS"],
+      "preview": "https://a-kederys.github.io/Forms/",
+      "source": "https://github.com/A-Kederys/Forms"
     },
     {
       "title": "JSON Handler",

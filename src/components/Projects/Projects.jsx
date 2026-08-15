@@ -145,6 +145,11 @@ function Projects({ cellX = 1, cellY = 1 }) {
               <h3 className={styles.detailsTitle}>{detailsProject.title}</h3>
               <p className={styles.detailsDescription}>{detailsProject.description}</p>
               <div className={styles.detailsLinks}>
+                {detailsProject.preview && (
+                  <a href={detailsProject.preview} target="_blank" rel="noreferrer" className={styles.detailsPreviewLink}>
+                    Preview
+                  </a>
+                )}
                 {detailsProject.source && (
                   <a href={detailsProject.source} target="_blank" rel="noreferrer" className={styles.detailsLink}>
                     Source
