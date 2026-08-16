@@ -13,6 +13,13 @@
       "download": "Almantas_Kederys_Bank_logistine.pdf"
     },
     {
+      "title": "Automotive Analysis",
+      "imageSrc": ["projects/powerbi1.webp", "projects/powerbi2.webp"],
+      "description": "Two dashboards — variability analysis and risk assessment for automotive data.",
+      "skills": ["Power BI"],
+      "download": "Almantas_Kederys_PowerBi2-3.pbix"
+    },
+    {
       "title": "To-Do List",
       "imageSrc": ["projects/bucket1.webp", "projects/bucket2.webp"],
       "description": "Add a task, then mark it done.",
