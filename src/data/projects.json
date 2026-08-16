@@ -20,6 +20,13 @@
       "download": "Almantas_Kederys_PowerBi2-3.pbix"
     },
     {
+      "title": "Transport Company Risk Analysis",
+      "imageSrc": ["projects/tableau1.webp", "projects/tableau2.webp", "projects/tableau3.webp"],
+      "description": "Accident risk analysis by cause, location, vehicle model, and driver.",
+      "skills": ["Tableau"],
+      "download": "AlmantasKederys_lab2.twbx"
+    },
+    {
       "title": "To-Do List",
       "imageSrc": ["projects/bucket1.webp", "projects/bucket2.webp"],
       "description": "Add a task, then mark it done.",
