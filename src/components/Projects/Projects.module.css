@@ -369,6 +369,37 @@
   z-index: 11;
 }
 
+.modalActions {
+  position: absolute;
+  top: var(--space-4);
+  right: calc(var(--space-4) + 48px);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  z-index: 11;
+}
+
+.modalAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: color var(--duration-fast) ease, opacity var(--duration-fast) ease;
+}
+
+.modalAction:hover {
+  color: var(--color-primary);
+  opacity: 0.9;
+}
+
 .modalClose {
   position: absolute;
   top: var(--space-4);

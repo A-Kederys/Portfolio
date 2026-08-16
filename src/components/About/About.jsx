@@ -3,20 +3,6 @@ import styles from "./About.module.css";
 import { getImageURL } from '../../imgPath';
 import skills from "../../data/skills.json";
 
-/* Originalios technologijų spalvos – naudojamos tik hover būsenoje */
-const SKILL_HOVER_COLORS = {
-  HTML: '#E34F26',
-  CSS: '#1572B6',
-  JavaScript: '#F7DF1E',
-  React: '#61DAFB',
-  'Node.js': '#339933',
-  PHP: '#777BB4',
-  Python: '#3776AB',
-  MySQL: '#4479A1',
-  Laravel: '#FF2D20',
-  'Tailwind CSS': '#06B6D4',
-};
-
 function getTitlePositionClass(cellX, cellY) {
   if (cellX === 1 && cellY === 0) return styles.titleTopRight;
   if (cellX === 0 && cellY === 1) return styles.titleBottomLeft;
@@ -98,7 +84,7 @@ function About({ cellX = 1, cellY = 0 }) {
                   className={styles.skillPill}
                   key={id}
                   data-skill={skill.title}
-                  style={SKILL_HOVER_COLORS[skill.title] ? { '--skill-hover': SKILL_HOVER_COLORS[skill.title] } : undefined}
+                  style={{ '--skill-hover': skill.hoverColor }}
                 >
                   <img src={getImageURL(skill.imageSrc)} alt="" />
                   <span>{skill.title}</span>

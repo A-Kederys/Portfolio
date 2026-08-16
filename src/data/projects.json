@@ -6,6 +6,13 @@
       "skills": ["Laravel", "Tailwind", "Alpine.js", "TMDB API"]
     },
     {
+      "title": "Term Deposit Prediction (Logistic Regression)",
+      "imageSrc": ["projects/bigquery1.webp", "projects/bigquery2.webp", "projects/bigquery3.webp"],
+      "description": "Logistic regression model predicting whether bank clients will open a term deposit, based on telemarketing campaign data.",
+      "skills": ["BigQuery", "SQL", "Excel"],
+      "download": "Almantas_Kederys_Bank_logistine.pdf"
+    },
+    {
       "title": "To-Do List",
       "imageSrc": ["projects/bucket1.webp", "projects/bucket2.webp"],
       "description": "Add a task, then mark it done.",
