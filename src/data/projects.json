@@ -6,6 +6,14 @@
       "skills": ["Laravel", "Tailwind", "Alpine.js", "TMDB API"]
     },
     {
+      "title": "NYC Yellow Taxi Analytics",
+      "imageSrc": ["projects/taxi1.webp", "projects/taxi2.webp", "projects/taxi3.webp", "projects/taxi4.webp", "projects/taxi5.webp"],
+      "description": "Analysis of 2025 NYC Yellow Taxi trip data using Python, DuckDB and Power BI, covering revenue, trip patterns, payment methods and geographic demand.",
+      "skills": ["Power BI", "Python", "SQL"],
+      "download": "NYC_Yellow_Taxi_2025.pbix",
+      "source": "https://github.com/A-Kederys/nyc-yellow-taxi-2025"
+    },
+    {
       "title": "Term Deposit Prediction (Logistic Regression)",
       "imageSrc": ["projects/bigquery1.webp", "projects/bigquery2.webp", "projects/bigquery3.webp"],
       "description": "Logistic regression model predicting whether bank clients will open a term deposit, based on telemarketing campaign data.",
