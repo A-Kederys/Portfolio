@@ -6,6 +6,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-coverflow';
 import projects from '../../data/projects.json';
+import skills from '../../data/skills.json';
 import { getImageURL } from '../../imgPath';
 import styles from './Projects.module.css';
 
@@ -30,6 +31,15 @@ function getTitlePositionClass(cellX, cellY) {
   if (cellX === 0 && cellY === 1) return styles.titleBottomLeft;
   if (cellX === 1 && cellY === 1) return styles.titleBottomRight;
   return '';
+}
+
+const skillAliases = {
+  Tailwind: 'Tailwind CSS',
+};
+
+function getSkillColor(skillTitle) {
+  const skill = skills.find(({ title }) => title === (skillAliases[skillTitle] || skillTitle));
+  return skill?.hoverColor || 'var(--color-primary)';
 }
 
 function Projects({ cellX = 1, cellY = 1 }) {
@@ -138,7 +148,13 @@ function Projects({ cellX = 1, cellY = 1 }) {
                   {project.skills?.length > 0 && (
                     <div className={styles.tags}>
                       {project.skills.map((skill, i) => (
-                        <span key={i} className={styles.tag}>{skill}</span>
+                        <span
+                          key={i}
+                          className={styles.tag}
+                          style={{ '--skill-hover': getSkillColor(skill) }}
+                        >
+                          {skill}
+                        </span>
                       ))}
                     </div>
                   )}
